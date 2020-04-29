@@ -190,8 +190,8 @@ const Step = Steps.Step;
         const values_step3={nom_Prenom_Pere,profession_Pere,nom_Prenom_mere,profession_mere,adresse_parent};
 
 
-        const {type_Bac,annee_Bac,mention,lycee,delegue,academie,id_filiere,niveau}=this.state;
-        const values_step4={type_Bac,annee_Bac,mention,lycee,delegue,academie,id_filiere,niveau};
+        const {type_Bac,annee_Bac,mention,lycee,delegue,academie,id_filiere,niveau,status}=this.state;
+        const values_step4={type_Bac,annee_Bac,mention,lycee,delegue,academie,id_filiere,niveau,status};
 
         const steps = [{
           title: '',

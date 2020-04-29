@@ -65,6 +65,16 @@ export default class FourthStep extends Component {
                    <option  value="Assez bien">Assez bien</option>
                   
                    </NativeSelect>
+                         
+                   <NativeSelect style={styles}   defaultValue={values.status} onChange={this.props.handleChange('status')}>
+                   
+                   <option  value="externe">etudiant externe</option>
+                   <option  value="cp1"> etudiant cp1</option>
+                   <option  value="cp2"> etudiant cp2</option>
+                   <option  value="GI">etudinat ingenieur</option>
+                  
+                   </NativeSelect>
+
                     <br></br>
                    
                    <TextField style={styles} floatingLabelFixed="Lycée" placeholder="Nom de votre Lycée" floatingLabelText="Lycée"  defaultValue={values.lycee}  onChange={this.props.handleChange('lycee')}></TextField>
