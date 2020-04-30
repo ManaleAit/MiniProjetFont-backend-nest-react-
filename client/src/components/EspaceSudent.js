@@ -9,7 +9,7 @@ import school from './school';
 import choixfil from './choix';
 import Logout from './Logout';
 
-import  RegistrationForm from './RegistrationForm';
+import  reinscriptionForm  from './reinscriptionForm';
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -80,7 +80,7 @@ export default   class EspaceSudent  extends Component {
                 
                   <span>
                   <ReloadOutlined /> 
-                    <span> <Link to="/inscription">Ré-Inscription </Link></span>
+                    <span> <Link to="/reinscription">Ré-Inscription </Link></span>
                   </span>
                
               
@@ -119,7 +119,7 @@ export default   class EspaceSudent  extends Component {
           
           <Layout>
             
-              <div className="App"><Route path="/inscription" component={RegistrationForm}></Route> </div>
+              <div className="App"><Route path="/reinscription" component={reinscriptionForm}></Route> </div>
               
               <Route path="/prfl" component={profil}></Route>
               <Route path="/school" component={school}></Route> 
