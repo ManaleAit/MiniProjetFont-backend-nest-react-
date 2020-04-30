@@ -12,6 +12,8 @@ import EspaceSudent from './components/EspaceSudent';
 import profil from './components/profil';
 import school from './components/school';
 import choix from './components/choix';
+import  reinscriptionForm  from './components/reinscriptionForm';
+ 
 function App() {
   return (
 
@@ -66,6 +68,13 @@ function App() {
    <Switch>
    
    <Route path="/choix" component={choix}></Route>
+
+   </Switch>
+
+
+   <Switch>
+   
+   <Route path="/reinscriptionForm" component={reinscriptionForm}></Route>
 
    </Switch>
 

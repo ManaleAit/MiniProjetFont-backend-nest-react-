@@ -63,7 +63,10 @@ margin-bottom: 30px;
 
   color: rgb(22, 22, 58);
 }
+.err{
 
+  color: red;
+}
 .esp{
 padding-left: 50px;
 color: rgb(22, 22, 58);
