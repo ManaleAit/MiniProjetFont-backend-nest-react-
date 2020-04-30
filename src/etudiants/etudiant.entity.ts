@@ -1,5 +1,5 @@
 import { Entity, BaseEntity, PrimaryColumn,ManyToOne, Column,Double } from "typeorm";
-
+import * as bcrypt from 'bcrypt';
 import { Filiere } from "src/filieres/filiere.entity";
 
 @Entity()
@@ -11,7 +11,7 @@ export class etudiant extends BaseEntity{
     @Column("varchar", { length: 30 })
     cin:string;
 
-    @Column("varchar", { length: 30 })
+    @Column("varchar", { length: 100 })
     password:string;
 
     @Column("varchar", { length: 30 })
@@ -20,6 +20,8 @@ export class etudiant extends BaseEntity{
     @Column("double")
     note:Double;
 
+    @Column("varchar", { length:100})
+    pass_salt:string;
 
 
    
@@ -44,23 +46,23 @@ export class etudiant extends BaseEntity{
     @Column("varchar", { length: 20 })
     telephone:string;
 
-    @Column("varchar", { length: 30 })
+    @Column("varchar", { length: 100 })
      nom_Prenom_Pere:string;
 
-    @Column("varchar", { length: 30 })
+    @Column("varchar", { length: 100 })
     profession_Pere:string;
 
-    @Column("varchar", { length: 40 })
+    @Column("varchar", { length: 100 })
     nom_Prenom_mere:string;
 
-    @Column("varchar", { length: 50 })
+    @Column("varchar", { length: 100 })
     profession_mere:string;
 
-    @Column("varchar", { length: 10 })
+    @Column("varchar", { length: 100})
     adresse_parent:string;
 
-    /*@Column("varchar", { length: 30 })
-    parents_phone:string;*/
+    @Column("varchar", { length: 30 })
+    parents_phone:string;
 
     @Column("varchar", { length: 30 })
     annee_Bac:string;
@@ -68,11 +70,11 @@ export class etudiant extends BaseEntity{
     @Column("varchar", { length: 100})
     type_Bac:string;
 
-    @Column("varchar", { length: 1100 })
+    @Column("varchar", { length: 100 })
     mention:string;
 
 
-    @Column("varchar", { length: 1100 })
+    @Column("varchar", { length: 100 })
     lycee:string;
 
     @Column("varchar", { length: 100})
@@ -101,7 +103,10 @@ export class etudiant extends BaseEntity{
     @Column("varchar", { length: 100 })
     Type_diplome:string;
 
-
+    async validatePassword(password:string):Promise<Boolean>{
+        const  hash=await bcrypt.hash(password,this.pass_salt);
+         return hash===this.password;
+     }
 
  
 }

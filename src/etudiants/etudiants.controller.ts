@@ -5,10 +5,10 @@ import { etudiant } from './etudiant.entity';
 import  { imageFileFilter } from './imageFileFilter';
 import {editFileName} from './editFileName';
 import {FilesInterceptor} from '@nestjs/platform-express';
-
 import { diskStorage } from 'multer';
 import { AuthDTO } from 'src/candidatures/dto/AuthDTO';
-@Controller('etuds')
+
+@Controller('etudiant')
 export class EtudiantsController {
     constructor(private etudiantsService:etudiantsService){ }
 

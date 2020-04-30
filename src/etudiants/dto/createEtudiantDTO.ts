@@ -53,8 +53,9 @@ export class CreateEtudiantDTO{
    
     adresse_parent:string;
 
-    annee_Bac:string;
+    parents_phone:string;
 
+    annee_Bac:string;
 
     type_Bac:string;
 

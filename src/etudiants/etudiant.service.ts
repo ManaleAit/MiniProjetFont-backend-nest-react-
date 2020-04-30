@@ -14,7 +14,7 @@ import {
 import { AuthDTO } from 'src/candidatures/dto/AuthDTO';
 import { JwtPayload } from 'src/candidatures/jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
-
+import * as bcrypt from 'bcrypt';
   @Injectable()
   export class etudiantsService {
  
@@ -68,36 +68,41 @@ import { JwtService } from '@nestjs/jwt';
       Et.profession_Pere=createEtDTO.profession_Pere;
       Et.nom_Prenom_mere=createEtDTO.nom_Prenom_mere;
       Et.profession_mere=createEtDTO.profession_mere;
- 
+      Et.pass_salt= await bcrypt.genSalt();
+      Et.password=await this.hashPassword(createEtDTO.password,Et.pass_salt);
       Et.adresse_parent=createEtDTO.adresse_parent;
       Et.annee_Bac=createEtDTO.annee_Bac;
       Et.type_Bac=createEtDTO.type_Bac;
       Et.mention=createEtDTO.mention;
-      Et.password=createEtDTO.password;
+      
       Et.delegue=createEtDTO.delegue;
       Et.academie=createEtDTO.academie;
       Et.niveau=createEtDTO.niveau;
       Et.picture=createEtDTO.picture;
       Et.status=createEtDTO.status;
       Et.Type_diplome=createEtDTO.Type_diplome;
-  
+      Et.parents_phone=createEtDTO.parents_phone;
+      Et.lycee=createEtDTO.lycee;
       // Get the filiere object from the id
       let filiere: Filiere = await this.filiereRepository.findOne({
        id_filiere: createEtDTO.id_filiere,
       });
       Et.filiere = filiere;
     
-      try {
+   //   try {
+        console.log(filiere.nom_filiere);
           await this.etudiantRepository.insert(Et);
-      } catch (error) {
+     /* } catch (error) {
         if (error.code === 'ER_DUP_ENTRY') {
           throw new ConflictException('Code Massar , CIN or Email Already Exist');
         }else {
           throw new InternalServerErrorException();
         }
-      }
+      }*/
     }
-  
+    private async hashPassword(password:string,salt:string):Promise<string> {
+      return bcrypt.hash(password,salt);
+    }
         
    async update(contact: CreateEtudiantDTO): Promise<any> {
       return await this.etudiantRepository.update(contact.massar, contact);
@@ -112,10 +117,7 @@ import { JwtService } from '@nestjs/jwt';
 async signIn(authDTO: AuthDTO): Promise<{ accessToken: string }> {
   const { massar, email, password } = authDTO;
 
-  const etudiant = await this. etudiantRepository.findOne({
-    email,
-    massar,
-  });
+  const etudiant = await this.etudiantRepository.validateUserPassword(authDTO);
 
   if (etudiant) {
   
