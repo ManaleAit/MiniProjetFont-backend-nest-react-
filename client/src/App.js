@@ -3,17 +3,14 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import Connexion  from "./components/Connexion";
 import {BrowserRouter as Router,Route,Switch }from 'react-router-dom';
-import RegistrationForm  from "./components/RegistrationForm";
 import StudentDashboard from "./components/StudentDashboard";
-
 import Logout from './components/Logout';
 import EspaceSudent from './components/EspaceSudent';
-
 import profil from './components/profil';
 import school from './components/school';
 import choix from './components/choix';
 import  reinscriptionForm  from './components/reinscriptionForm';
- 
+ import {Checkout} from './components/Inscription/Checkout'
 function App() {
   return (
 
@@ -24,15 +21,7 @@ function App() {
       
     <Switch>
      
-      <Route exact path="/inscription" render={()=>(
-             <div className="StepForm">
-           
-               <RegistrationForm></RegistrationForm>
-           </div>
-        
-        )}>
-
-      </Route>
+      <Route exact path="/inscription" component={Checkout}></Route>
       <Route path="/" component={Connexion}></Route>
      
       <Route path="/dash" component={StudentDashboard}></Route>
