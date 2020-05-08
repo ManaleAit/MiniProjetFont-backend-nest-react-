@@ -1,226 +1,226 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import MenuItem from "@material-ui/core/MenuItem";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import Button from "@material-ui/core/Button";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import Button from '@material-ui/core/Button';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 //regex expression for validation
 
 const validationSchema = Yup.object({
-  id_filiere: Yup.string().required("veillez choisir votre  filière "),
-  niveau: Yup.string().required("veillez choisir votre niveau"),
-  type_Bac: Yup.string().required("veillez choisir votre Type de BAC"),
+  id_filiere: Yup.string().required('veillez choisir votre  filière '),
+  niveau: Yup.string().required('veillez choisir votre niveau'),
+  type_Bac: Yup.string().required('veillez choisir votre Type de BAC'),
   annee_Bac: Yup.string().required("veillez choisir l'année d'obtention"),
-  mention: Yup.string().required("la mention est requise"),
-  status: Yup.string().required("Votre status  est requise"),
+  mention: Yup.string().required('la mention est requise'),
+  status: Yup.string().required('Votre status  est requise'),
   lycee: Yup.string()
-    .required("la lycée est requise")
-    .min(4, "veillez entrer une lycée valide"),
+    .required('la lycée est requise')
+    .min(4, 'veillez entrer une lycée valide'),
   delegue: Yup.string()
-    .required("la délégation est requise")
-    .min(4, "veillez entrer une délégation valide "),
+    .required('la délégation est requise')
+    .min(4, 'veillez entrer une délégation valide '),
   academie: Yup.string()
     .required("l'Académie est requies")
-    .min(4, "veillez entrer une académie valide "),
+    .min(4, 'veillez entrer une académie valide '),
   diplomePrecedent: Yup.string().notRequired(
-    "veillez choisir votre dernier diplôme"
+    'veillez choisir votre dernier diplôme',
   ),
   etablissement: Yup.string()
     .notRequired("l'établissement est requise")
-    .min(4, "veillez entrer une établissement valide "),
+    .min(4, 'veillez entrer une établissement valide '),
   ville: Yup.string()
-    .notRequired("la ville est requise")
-    .min(4, "veillez entrer une ville valide "),
+    .notRequired('la ville est requise')
+    .min(4, 'veillez entrer une ville valide '),
 });
 const annee_Bac = [
   {
-    value: "2012",
-    label: "2012",
+    value: '2012',
+    label: '2012',
   },
   {
-    value: "2013",
-    label: "2013",
+    value: '2013',
+    label: '2013',
   },
   {
-    value: "2014",
-    label: "2014",
+    value: '2014',
+    label: '2014',
   },
   {
-    value: "2015",
-    label: "2015",
+    value: '2015',
+    label: '2015',
   },
   {
-    value: "2016",
-    label: "2016",
+    value: '2016',
+    label: '2016',
   },
   {
-    value: "2017",
-    label: "2017",
+    value: '2017',
+    label: '2017',
   },
   {
-    value: "2018",
-    label: "2018",
+    value: '2018',
+    label: '2018',
   },
   {
-    value: "2019",
-    label: "2019",
+    value: '2019',
+    label: '2019',
   },
   {
-    value: "2020",
-    label: "2020",
+    value: '2020',
+    label: '2020',
   },
   {
-    value: "2021",
-    label: "2021",
+    value: '2021',
+    label: '2021',
   },
   {
-    value: "2022",
-    label: "2022",
+    value: '2022',
+    label: '2022',
   },
   {
-    value: "2023",
-    label: "2023",
+    value: '2023',
+    label: '2023',
   },
 ];
 const FiliereDispo = [
   {
-    value: "0",
+    value: '0',
     label: "Sciences et Technologies pour l'Ingénieur - STI",
   },
   {
-    value: "1",
-    label: "Génie Informatique - GINF",
+    value: '1',
+    label: 'Génie Informatique - GINF',
   },
   {
-    value: "2",
-    label: "Génie Industriel - GIND",
+    value: '2',
+    label: 'Génie Industriel - GIND',
   },
   {
-    value: "3",
-    label: "Génie Telecom et Réseaux - GTR",
+    value: '3',
+    label: 'Génie Telecom et Réseaux - GTR',
   },
   {
-    value: "4",
-    label: "Génie des Procédés et Matériaux Céramiques - GPMC",
+    value: '4',
+    label: 'Génie des Procédés et Matériaux Céramiques - GPMC',
   },
 ];
 const niveauDispo = [
   {
-    value: "1CP",
-    label: "Première année",
+    value: '1CP',
+    label: 'Première année',
   },
   {
-    value: "2CP",
-    label: "Deuxième année",
+    value: '2CP',
+    label: 'Deuxième année',
   },
   {
-    value: "1CI",
-    label: "Troisième année",
+    value: '1CI',
+    label: 'Troisième année',
   },
   {
-    value: "2CI",
-    label: "Quatrième année",
+    value: '2CI',
+    label: 'Quatrième année',
   },
   {
-    value: "3CI",
-    label: "Cinquième année",
+    value: '3CI',
+    label: 'Cinquième année',
   },
 ];
 const typeBac = [
   {
-    value: "SMA",
+    value: 'SMA',
     label: "Sciences maths 'A'",
   },
   {
-    value: "SMB",
+    value: 'SMB',
     label: "Sciences maths 'B'",
   },
   {
-    value: "SPC",
-    label: "Sciences physique chimie",
+    value: 'SPC',
+    label: 'Sciences physique chimie',
   },
   {
-    value: "SVT",
-    label: "Sciences de la vie et de terre",
+    value: 'SVT',
+    label: 'Sciences de la vie et de terre',
   },
   {
-    value: "STE",
-    label: "Sciences et technologies électriques",
+    value: 'STE',
+    label: 'Sciences et technologies électriques',
   },
   {
-    value: "STM",
-    label: "Sciences et technologies mécaniques",
+    value: 'STM',
+    label: 'Sciences et technologies mécaniques',
   },
 ];
 const mentionBac = [
   {
-    value: "Tres bien",
-    label: "Très bien",
+    value: 'Tres bien',
+    label: 'Très bien',
   },
   {
-    value: "Bien",
-    label: "Bien",
+    value: 'Bien',
+    label: 'Bien',
   },
   {
-    value: "Assez bien",
-    label: "Assez bien",
+    value: 'Assez bien',
+    label: 'Assez bien',
   },
 ];
 
 const statusType = [
   {
-    value: "cp1",
-    label: "etudiant cp1",
+    value: 'cp1',
+    label: 'etudiant cp1',
   },
   {
-    value: "cp2",
-    label: "etudiant cp2",
+    value: 'cp2',
+    label: 'etudiant cp2',
   },
   {
-    value: "externe",
-    label: "etudiant externe",
+    value: 'externe',
+    label: 'etudiant externe',
   },
 
   {
-    value: "CI",
-    label: "eleve ingenieur",
+    value: 'CI',
+    label: 'eleve ingenieur',
   },
 ];
 const deplomedispo = [
   {
-    value: "CNC",
-    label: "Concours National Commun (CNC)",
+    value: 'CNC',
+    label: 'Concours National Commun (CNC)',
   },
   {
-    value: "DEUG",
-    label: "Diplôme universitaire de technologie (DUT)",
+    value: 'DEUG',
+    label: 'Diplôme universitaire de technologie (DUT)',
   },
   {
-    value: "Assez bien",
+    value: 'Assez bien',
     label: "Diplôme d'études universitaires générales (DEUG)",
   },
   {
-    value: "DEUST",
+    value: 'DEUST',
     label:
       "Diplôme d'études universitaires scientifiques et techniques (DEUST)",
   },
   {
-    value: "Licence",
-    label: "Licence (BAC+3)",
+    value: 'Licence',
+    label: 'Licence (BAC+3)',
   },
   {
-    value: "Master",
-    label: "Master (BAC+5)",
+    value: 'Master',
+    label: 'Master (BAC+5)',
   },
   {
-    value: "CP",
-    label: "Cycle préparatoire intégré",
+    value: 'CP',
+    label: 'Cycle préparatoire intégré',
   },
 ];
 
@@ -243,7 +243,7 @@ export const Etape4 = ({
       </Typography>
       <Formik
         initialValues={formData}
-        onSubmit={(values) => {
+        onSubmit={values => {
           setFormData(values);
           alert(JSON.stringify(values, null, 2));
           console.log(values);
@@ -265,7 +265,7 @@ export const Etape4 = ({
                   as={TextField}
                   helperText="Remarque: 
                   Les étudiants du cycle préparatoire ( 1ère et 2ème année ) doivent choisir la filière : Sciences et Technologies pour l'Ingénieur STI."
-                  helperText={touched.id_filiere ? errors.id_filiere : ""}
+                  helperText={touched.id_filiere ? errors.id_filiere : ''}
                   error={touched.id_filiere && Boolean(errors.id_filiere)}
                   fullWidth
                 >
@@ -277,7 +277,7 @@ export const Etape4 = ({
                     {FiliereDispo[0].label}
                   </MenuItem>
                   <ListSubheader>Cycle d'ingénieur (CI)</ListSubheader>
-                  {FiliereDispo.slice(1).map((option) => (
+                  {FiliereDispo.slice(1).map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
@@ -293,7 +293,7 @@ export const Etape4 = ({
                   label="niveau"
                   //  value={values.prenomFrancais}
                   as={TextField}
-                  helperText={touched.niveau ? errors.niveau : ""}
+                  helperText={touched.niveau ? errors.niveau : ''}
                   error={touched.niveau && Boolean(errors.niveau)}
                   fullWidth
                 >
@@ -311,7 +311,7 @@ export const Etape4 = ({
                     {niveauDispo[1].label}
                   </MenuItem>
                   <ListSubheader>Cycle d'ingénieur (CI)</ListSubheader>
-                  {niveauDispo.slice(1).map((option) => (
+                  {niveauDispo.slice(1).map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
@@ -327,11 +327,11 @@ export const Etape4 = ({
                   label="Type de BAC"
                   //  value={values.typeBac}
                   as={TextField}
-                  helperText={touched.type_Bac ? errors.type_Bacc : ""}
+                  helperText={touched.type_Bac ? errors.type_Bacc : ''}
                   error={touched.type_Bac && Boolean(errors.type_Bac)}
                   fullWidth
                 >
-                  {typeBac.map((option) => (
+                  {typeBac.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
@@ -347,15 +347,11 @@ export const Etape4 = ({
                   label="Année d'obtention"
                   //  value={values.annee_Bac}
                   as={TextField}
-                  helperText={
-                    touched.annee_Bac ? errors.annee_Bac : ""
-                  }
-                  error={
-                    touched.annee_Bac && Boolean(errors.annee_Bac)
-                  }
+                  helperText={touched.annee_Bac ? errors.annee_Bac : ''}
+                  error={touched.annee_Bac && Boolean(errors.annee_Bac)}
                   fullWidth
                 >
-                  {annee_Bac.map((option) => (
+                  {annee_Bac.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
@@ -371,7 +367,7 @@ export const Etape4 = ({
                   helperText=""
                   //  value={values.lycee}
                   as={TextField}
-                  helperText={touched.lycee ? errors.lycee : ""}
+                  helperText={touched.lycee ? errors.lycee : ''}
                   error={touched.lycee && Boolean(errors.lycee)}
                   fullWidth
                 />
@@ -385,25 +381,25 @@ export const Etape4 = ({
                   label="Mention"
                   //  value={values.mention}
                   as={TextField}
-                  helperText={touched.mention ? errors.mention : ""}
+                  helperText={touched.mention ? errors.mention : ''}
                   error={touched.mention && Boolean(errors.mention)}
                   fullWidth
                 >
-                  {mentionBac.map((option) => (
+                  {mentionBac.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
                   ))}
                 </Field>
               </Grid>
-             
+
               <Grid item xs={12} md={6}>
                 <Field
                   id="delegue"
                   name="delegue"
                   label="Délégation(النيابة)"
                   as={TextField}
-                  helperText={touched.delegue ? errors.delegue : ""}
+                  helperText={touched.delegue ? errors.delegue : ''}
                   error={touched.delegue && Boolean(errors.delegue)}
                   fullWidth
                 />
@@ -417,7 +413,7 @@ export const Etape4 = ({
                   helperText=""
                   //  value={values.academie}
                   as={TextField}
-                  helperText={touched.academie ? errors.academie : ""}
+                  helperText={touched.academie ? errors.academie : ''}
                   error={touched.academie && Boolean(errors.academie)}
                   fullWidth
                 />
@@ -432,11 +428,11 @@ export const Etape4 = ({
                   label="Status"
                   //  value={values.mention}
                   as={TextField}
-                  helperText={touched.status ? errors.status : ""}
+                  helperText={touched.status ? errors.status : ''}
                   error={touched.status && Boolean(errors.status)}
                   fullWidth
                 >
-                  {statusType.map((option) => (
+                  {statusType.map(option => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
@@ -465,7 +461,7 @@ export const Etape4 = ({
                       //  value={values.diplomePrecedent}
                       as={TextField}
                       helperText={
-                        touched.diplomePrecedent ? errors.diplomePrecedent : ""
+                        touched.diplomePrecedent ? errors.diplomePrecedent : ''
                       }
                       error={
                         touched.diplomePrecedent &&
@@ -473,7 +469,7 @@ export const Etape4 = ({
                       }
                       fullWidth
                     >
-                      {deplomedispo.map((option) => (
+                      {deplomedispo.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                           {option.label}
                         </MenuItem>
@@ -489,7 +485,7 @@ export const Etape4 = ({
                       //  value={values.etablissement}
                       as={TextField}
                       helperText={
-                        touched.etablissement ? errors.etablissement : ""
+                        touched.etablissement ? errors.etablissement : ''
                       }
                       error={
                         touched.etablissement && Boolean(errors.etablissement)
@@ -505,7 +501,7 @@ export const Etape4 = ({
                       helperText=""
                       //  value={values.ville}
                       as={TextField}
-                      helperText={touched.ville ? errors.ville : ""}
+                      helperText={touched.ville ? errors.ville : ''}
                       error={touched.ville && Boolean(errors.ville)}
                       fullWidth
                     />
@@ -531,8 +527,8 @@ export const Etape4 = ({
                 className={classes.button}
               >
                 {activeStep === steps.length - 1
-                  ? "verifier et confirmer"
-                  : "Suivant"}
+                  ? 'verifier et confirmer'
+                  : 'Suivant'}
               </Button>
             </div>
           </Form>

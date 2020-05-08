@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Page,
   Text,
@@ -6,62 +6,62 @@ import {
   Document,
   StyleSheet,
   Image,
-} from "@react-pdf/renderer";
-import PropTypes from "prop-types";
-import { blue } from "@material-ui/core/colors";
-import { date } from "yup";
+} from '@react-pdf/renderer';
+import PropTypes from 'prop-types';
+import { blue } from '@material-ui/core/colors';
+import { date } from 'yup';
 const styles = StyleSheet.create({
   page: {
     padding: 30,
   },
   container: {
     flex: 1,
-    flexDirection: "row",
-    "@media max-width: 400": {
-      flexDirection: "column",
+    flexDirection: 'row',
+    '@media max-width: 400': {
+      flexDirection: 'column',
     },
   },
   rightColumn: {
-    flexDirection: "column",
+    flexDirection: 'column',
     fontSize: 12,
     // marginLeft: 200,
     // marginBottom: 400,
   },
   container: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     fontSize: 12,
   },
   leftColumn: {
-    flexDirection: "column",
+    flexDirection: 'column',
     fontSize: 12,
     // marginTop: 8,
     // width: 170,
     // paddingTop: 30,
     // paddingRight: 15,
-    "@media max-width: 400": {
-      width: "100%",
+    '@media max-width: 400': {
+      width: '100%',
       paddingRight: 0,
     },
-    "@media orientation: landscape": {
+    '@media orientation: landscape': {
       width: 200,
     },
   },
   footer: {
     fontSize: 12,
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: 25,
     paddingTop: 10,
     borderWidth: 3,
-    borderColor: "gray",
-    borderStyle: "dashed",
-    "@media orientation: landscape": {
+    borderColor: 'gray',
+    borderStyle: 'dashed',
+    '@media orientation: landscape': {
       marginTop: 10,
     },
   },
   header: {
     fontSize: 12,
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: 25,
   },
 });
@@ -79,14 +79,13 @@ function Output({ formData }) {
           <Text>De l'étudiant en {formData.niveau} cycle d'ingénieur</Text>
         </View>
         <View style={[styles.container, { marginTop: 30 }]}>
-      
           <Text>massar: {formData.massar}</Text>
           <Text>CIN : {formData.cin}</Text>
         </View>
         <Text
           style={{
-            backgroundColor: "blue",
-            textAlign: "center",
+            backgroundColor: 'blue',
+            textAlign: 'center',
             marginTop: 30,
           }}
         >
@@ -96,66 +95,71 @@ function Output({ formData }) {
         <View style={[styles.container, { marginTop: 30 }]}>
           <View style={styles.leftColumn}>
             <Text>
-              <Text style={{ color: "blue" }}>Nom :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Nom :</Text>{' '}
               {formData.lastname_fr}
             </Text>
 
             <Text>
-              <Text style={{ color: "blue" }}>Date de naissance :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Date de naissance :</Text>{' '}
               {formData.dateNaissance}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Adresse :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Adresse :</Text>{' '}
               {formData.address}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>GSM :</Text> {formData.telephone}
+              <Text style={{ color: 'blue' }}>GSM :</Text> {formData.telephone}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Email :</Text> {formData.email}
+              <Text style={{ color: 'blue' }}>Email :</Text> {formData.email}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Père :</Text> {formData.nom_Prenom_Pere}
+              <Text style={{ color: 'blue' }}>Père :</Text>{' '}
+              {formData.nom_Prenom_Pere}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Profession :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Profession :</Text>{' '}
               {formData.profession_Pere}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Mère :</Text> {formData.nom_Prenom_mere}
+              <Text style={{ color: 'blue' }}>Mère :</Text>{' '}
+              {formData.nom_Prenom_mere}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Profession :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Profession :</Text>{' '}
               {formData.profession_mere}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Adresse :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Adresse :</Text>{' '}
               {formData.adresse_parent}
             </Text>
           </View>
           <View style={styles.rightColumn}>
             <Text>
-              <Text style={{ color: "blue" }}>prenomFrancais : </Text>
+              <Text style={{ color: 'blue' }}>prenomFrancais : </Text>
               {formData.lastname_fr}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Nationalité :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Nationalité :</Text>{' '}
               {formData.nationalite}
             </Text>
           </View>
           <View>
             <Text>Photo d'identité:</Text>
-            <Image  src={require(`@../../../uploads/${formData.photo}`)}   style={{width:80,height:80}}/>
+            <Image
+              src={require(`@../../../uploads/${formData.photo}`)}
+              style={{ width: 80, height: 80 }}
+            />
             <Text>
-              <Text style={{ color: "blue" }}>telephone : </Text>
+              <Text style={{ color: 'blue' }}>telephone : </Text>
               {formData.teleParent}
             </Text>
           </View>
         </View>
         <Text
           style={{
-            backgroundColor: "blue",
-            textAlign: "center",
+            backgroundColor: 'blue',
+            textAlign: 'center',
             marginTop: 30,
           }}
         >
@@ -164,31 +168,31 @@ function Output({ formData }) {
         <View style={[styles.container, { marginTop: 30 }]}>
           <View style={styles.leftColumn}>
             <Text>
-              <Text style={{ color: "blue" }}>Type de BAC :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Type de BAC :</Text>{' '}
               {formData.type_Bac}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Lycée d'origine :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Lycée d'origine :</Text>{' '}
               {formData.lycee}
             </Text>
           </View>
           <View style={styles.rightColumn}>
             <Text>
-              <Text style={{ color: "blue" }}>Mention :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Mention :</Text>{' '}
               {formData.mention}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Délégation :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Délégation :</Text>{' '}
               {formData.delegue}
             </Text>
           </View>
           <View>
             <Text>
-              <Text style={{ color: "blue" }}>Année :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Année :</Text>{' '}
               {formData.annee_Bac}
             </Text>
             <Text>
-              <Text style={{ color: "blue" }}>Académie :</Text>{" "}
+              <Text style={{ color: 'blue' }}>Académie :</Text>{' '}
               {formData.academie}
             </Text>
           </View>
@@ -199,10 +203,10 @@ function Output({ formData }) {
             renseignements
           </Text>
           <Text style={{ fontSize: 12, marginTop: 50 }}>
-            Signature de l'étudiant{" "}
+            Signature de l'étudiant{' '}
           </Text>
           <Text style={{ fontSize: 12, marginTop: 50 }}>
-            {" "}
+            {' '}
             Reçu téléchargé le : {new Date().getDate}
           </Text>
         </View>
