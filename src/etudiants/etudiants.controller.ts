@@ -40,8 +40,8 @@ export class EtudiantsController {
     }  
 
     @Put('/choixFiliere')
-    async  choixFiliere(){
-      return this.etudiantsService.choixFiliere();
+    async  choixFiliere(@Param('nbplaceInfo') nbplaceInfo,@Param('nbplaceIndus') nbplaceIndus ,@Param('nbplaceGPMC') nbplaceGPMC ,@Param('nbplaceGTR') nbplaceGTR){
+      return this.etudiantsService.choixFiliere(nbplaceInfo,nbplaceIndus,nbplaceGPMC ,nbplaceGTR);
     }
 
     @Get(':massar/filiere')

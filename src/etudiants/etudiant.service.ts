@@ -148,29 +148,445 @@ async delete(id): Promise<any> {
 
 // choix filiere
 
-  async  choixFiliere():Promise<void>{
-           
+  async  choixFiliere(nbplaceInfo:number,nbplaceIndus:number ,nbplaceGPMC:number ,nbplaceGTR:number  ):Promise<void>{
+      
+  // 1 filiere informatique 
+  // 2 filiere Indus
+  // 3 filiere GPMC
+  // 4  filiere GTR
+
   var listEt=await this.etudiantRepository.find();
   
   const newLocal = (await listEt).length;
   var count=0;
-  // count le nombre des etudiant en cp2
+  // count le nombre des etudiant en 2CP
   for(var k=0;k<newLocal;k++){
      
-     if(listEt[i].status==='cp2'){
+     if(listEt[k].niveau==='2CP'){
 
            count++;
 
      }
 
   }
-  var nombreEtudiantClasse= Math.trunc(count/4);
+
+
+   var nombreEtudiantClasse= Math.trunc(count/4);
+   // classement 2
    for(var i =0;i<newLocal;i++){
+
+    if(listEt[i].classement<=nombreEtudiantClasse  && listEt[i].niveau==='2CP'){
+       
+              
+      let filiere: Filiere = await this.filiereRepository.findOne({
+       id_filiere: listEt[i].choixFilere1
+      });
+      listEt[i].filiere = filiere;
+      listEt[i].id_filiere=listEt[i].choixFilere1
+        await  this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+
+    
+
+
+
+        if(listEt[i].choixFilere1==1){
+               
+             nbplaceInfo--;
+
+        }
+        else if(listEt[i].choixFilere1==2){
+              
+           nbplaceIndus--;
+        }
+        else if(listEt[i].choixFilere1==3){
+              
+          nbplaceGPMC--;;
+       }
+       else{
+              
+        nbplaceGTR--;
+     }
+   }
+
+   }
+
+   // classement 2
+   for(var i =0;i<newLocal;i++){
+            
+    if(listEt[i].classement>nombreEtudiantClasse  &&  listEt[i].classement<=(2*nombreEtudiantClasse)  && listEt[i].niveau==='2CP'){
+           
+      if(listEt[i].choixFilere1==1 && nbplaceInfo>0){
+        let filiere: Filiere = await this.filiereRepository.findOne({
+          id_filiere: listEt[i].choixFilere1
+         });
+         listEt[i].filiere = filiere;
+         listEt[i].id_filiere=listEt[i].choixFilere1
+         nbplaceInfo--;
+         
+ 
+        await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           
+      }
+
+      else if(listEt[i].choixFilere1==2 && nbplaceIndus>0){
+        let filiere: Filiere = await this.filiereRepository.findOne({
+          id_filiere: listEt[i].choixFilere1
+         });
+         listEt[i].filiere = filiere;
+         listEt[i].id_filiere=listEt[i].choixFilere1
+         await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+         nbplaceIndus--;
+      }
+      else if(listEt[i].choixFilere1==3  && nbplaceGPMC>0){
+        let filiere: Filiere = await this.filiereRepository.findOne({
+          id_filiere: listEt[i].choixFilere1
+         });
+         listEt[i].filiere = filiere;
+         listEt[i].id_filiere=listEt[i].choixFilere1
+         await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+         nbplaceGPMC--;
+      }
+      else if(listEt[i].choixFilere1==4  && nbplaceGTR>0){
+        let filiere: Filiere = await this.filiereRepository.findOne({
+          id_filiere: listEt[i].choixFilere1
+         });
+         listEt[i].filiere = filiere;
+         listEt[i].id_filiere=listEt[i].choixFilere1;
+         await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+         nbplaceGTR--;
+      }
+
+      else{
+        let filiere: Filiere = await this.filiereRepository.findOne({
+          id_filiere: listEt[i].choixFilere2
+         });
+         listEt[i].filiere = filiere;
+         listEt[i].id_filiere=listEt[i].choixFilere2
+         await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+        
+        if(listEt[i].choixFilere2==1){
+               
+          nbplaceInfo--;
+
+        }
+        else if(listEt[i].choixFilere2==2){
+           
+          nbplaceIndus--;
+        }
+        else if(listEt[i].choixFilere2==3){
+           
+          nbplaceGPMC--;
+        }
+        else{
+           
+          nbplaceGTR--;
+        }
+    
+        
+
+
+      }
+    
+     
+     }
+    }
+    // classement 3
+    for(var i =0;i<newLocal;i++){
+      
+      if(listEt[i].classement>(2*nombreEtudiantClasse)  &&  listEt[i].classement<=(3*nombreEtudiantClasse)   && listEt[i].niveau==='2CP'){
+        if(listEt[i].choixFilere1==1 && nbplaceInfo>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere1
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere1
+           nbplaceInfo--;
+           
+   
+          await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+             
+        }
+
+        else if(listEt[i].choixFilere1==2 && nbplaceIndus>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere1
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere1
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceIndus--;
+        }
+        else if(listEt[i].choixFilere1==3  && nbplaceGPMC>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere1
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere1
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGPMC--;
+        }
+        else if(listEt[i].choixFilere1==4  && nbplaceGTR>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere1
+            
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere1
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGTR--;
+        }
+
+        else if(listEt[i].choixFilere2==1 && nbplaceInfo>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere2
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere2
+           nbplaceInfo--;
+           
+   
+          await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+             
+        }
+
+        else if(listEt[i].choixFilere2==2 && nbplaceIndus>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere2
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere2
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceIndus--;
+        }
+        else if(listEt[i].choixFilere2==3  && nbplaceGPMC>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere2
+            
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere2
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGPMC--;
+        }
+        else if(listEt[i].choixFilere2==4  && nbplaceGTR>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere2
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere2
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGTR--;
+        }
+
+        else{
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere3
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere3
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+          
+          if(listEt[i].choixFilere3==1){
+                 
+            nbplaceInfo--;
+  
+          }
+          else if(listEt[i].choixFilere3==2){
+             
+            nbplaceIndus--;
+          }
+          else if(listEt[i].choixFilere3==3){
+             
+            nbplaceGPMC--;
+          }
+          else{
+             
+            nbplaceGTR--;
+          }
+      
+          
+  
+
+        }
+
+
+      }
+
+    }
+
+// classement 4
+    for(var i =0;i<newLocal;i++){
+      
+      if(listEt[i].classement>(3*nombreEtudiantClasse)    && listEt[i].niveau==='2CP'){
+        if(listEt[i].choixFilere1==1 && nbplaceInfo>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere1
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere1
+           nbplaceInfo--;
+           
+   
+          await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+             
+        }
+
+        else if(listEt[i].choixFilere1==2 && nbplaceIndus>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere1
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere1
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceIndus--;
+        }
+        else if(listEt[i].choixFilere1==3  && nbplaceGPMC>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere1
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere1
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGPMC--;
+        }
+        else if(listEt[i].choixFilere1==4  && nbplaceGTR>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere1
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere1
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGTR--;
+        }
+
+        else if(listEt[i].choixFilere2==1 && nbplaceInfo>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere2
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere2
+           nbplaceInfo--;
+           
+   
+          await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+             
+        }
+
+        else if(listEt[i].choixFilere2==2 && nbplaceIndus>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere2
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere2
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceIndus--;
+        }
+        else if(listEt[i].choixFilere2==3  && nbplaceGPMC>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere2
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere2
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGPMC--;
+        }
+        else if(listEt[i].choixFilere2==4  && nbplaceGTR>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere2
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere2
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGTR--;
+        }
+
+        else if(listEt[i].choixFilere3==1 && nbplaceInfo>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere3
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere3
+           nbplaceInfo--;
+           
+   
+          await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+             
+        }
+
+        else if(listEt[i].choixFilere3==2 && nbplaceIndus>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere3
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere3
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceIndus--;
+        }
+        else if(listEt[i].choixFilere3==3  && nbplaceGPMC>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere3
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere3
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGPMC--;
+        }
+        else if(listEt[i].choixFilere3==4  && nbplaceGTR>0){
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere3
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere3
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+           nbplaceGTR--;
+        }
+
+
+
+
+
+        else{
+          let filiere: Filiere = await this.filiereRepository.findOne({
+            id_filiere: listEt[i].choixFilere4
+           });
+           listEt[i].filiere = filiere;
+           listEt[i].id_filiere=listEt[i].choixFilere4
+           await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
+          
+          if(listEt[i].choixFilere4==1){
+                 
+            nbplaceInfo--;
+  
+          }
+          else if(listEt[i].choixFilere4==2){
+             
+            nbplaceIndus--;
+          }
+          else if(listEt[i].choixFilere4==3){
+             
+            nbplaceGPMC--;
+          }
+          else{
+             
+            nbplaceGTR--;
+          }
+      
+          
+  
+
+        }
+
+
+      }
+
+    }
+ 
+   /*for(var i =0;i<newLocal;i++){
             
         
           
          
-            if(listEt[i].classement<=nombreEtudiantClasse  && listEt[i].status==='cp2'){
+            if(listEt[i].classement<=nombreEtudiantClasse  && listEt[i].status==='2CP'){
        
               
                let filiere: Filiere = await this.filiereRepository.findOne({
@@ -180,7 +596,7 @@ async delete(id): Promise<any> {
              
                  await  this.etudiantRepository.update(listEt[i].massar,listEt[i]);
             }
-            else if(listEt[i].classement>nombreEtudiantClasse  &&  listEt[i].classement<=(2*nombreEtudiantClasse)  && listEt[i].status==='cp2'){
+            else if(listEt[i].classement>nombreEtudiantClasse  &&  listEt[i].classement<=(2*nombreEtudiantClasse)  && listEt[i].status==='2CP'){
            
              let filiere: Filiere = await this.filiereRepository.findOne({
               id_filiere: listEt[i].choixFilere2
@@ -189,7 +605,7 @@ async delete(id): Promise<any> {
          
             await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
             }
-            else if ( listEt[i].classement>(2*nombreEtudiantClasse)  &&  listEt[i].classement<=(3*nombreEtudiantClasse)   && listEt[i].status==='cp2' ){
+            else if ( listEt[i].classement>(2*nombreEtudiantClasse)  &&  listEt[i].classement<=(3*nombreEtudiantClasse)   && listEt[i].status==='2CP' ){
            
              let filiere: Filiere = await this.filiereRepository.findOne({
               id_filiere: listEt[i].choixFilere3
@@ -198,7 +614,7 @@ async delete(id): Promise<any> {
           
               await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
             
-            }else if( listEt[i].status==='cp2' ){
+            }else if( listEt[i].status==='2CP' ){
               
               let filiere: Filiere = await this.filiereRepository.findOne({
                id_filiere: listEt[i].choixFilere4
@@ -208,11 +624,11 @@ async delete(id): Promise<any> {
                await this.etudiantRepository.update(listEt[i].massar,listEt[i]);
           
              }
-            
+         
 
          
    }
-
+ */
 
   }
 
