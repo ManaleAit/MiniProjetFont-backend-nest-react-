@@ -1,50 +1,51 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Paper from "@material-ui/core/Paper";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-import { Etape1 } from "./Etape1";
-import { Etape2 } from "./Etape2";
-import { Etape3 } from "./Etape3";
-import { Etape4 } from "./Etape4";
-import { Etape5 } from "./Etape5";
-import Output from "./Recu";
-import ReactPDF from "@react-pdf/renderer";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import ReactDOM from "react-dom";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Paper from '@material-ui/core/Paper';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import { Etape1 } from './Etape1';
+import { Etape2 } from './Etape2';
+import { Etape3 } from './Etape3';
+import { Etape4 } from './Etape4';
+import { Etape5 } from './Etape5';
+import Google from './googleInscription';
+import Output from './Recu';
+import ReactPDF from '@react-pdf/renderer';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import ReactDOM from 'react-dom';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
+      {'Copyright © '}
       <Link color="inherit" href="#">
         Écoles nationales des sciences appliquées de Safi
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   appBar: {
-    position: "relative",
+    position: 'relative',
   },
   layout: {
-    width: "auto",
+    width: 'auto',
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 1000,
-      marginLeft: "auto",
-      marginRight: "auto",
+      width: 1050,
+      marginLeft: 'auto',
+      marginRight: 'auto',
     },
   },
   paper: {
@@ -61,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 0, 5),
   },
   buttons: {
-    display: "flex",
-    justifyContent: "flex-end",
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   button: {
     marginTop: theme.spacing(3),
@@ -71,11 +72,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const steps = [
-  "première étape",
-  "deuxième étape",
-  "troisième étape",
-  "quatrième étape",
-  "cinqième étape",
+  'commencez avec votre compte google',
+  'première étape',
+  'deuxième étape',
+  'troisième étape',
+  'quatrième étape',
+  'cinqième étape',
 ];
 
 export const Checkout = () => {
@@ -83,45 +85,47 @@ export const Checkout = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [formData, setFormData] = useState({
     //first page
-    cin: "Hamza",
-    cne: "Hamza",
-    email: "Hamza@gmail.com",
-    confirmEmail: "Hamza@gmail.com",
-    password: "Hamza111",
-    confirmPassword: "Hamza111",
+    massar: '',
+    cin: '',
+    email: '',
+    confirmEmail: '',
+    password: '',
+    confirmPassword: '',
     //seconde page
-    NomFrancais: "Hamza",
-    prenomFrancais: "Hamza",
-    nomArabe: "Hamza",
-    prenomArabe: "Hamza",
-    dateNaissance: "Hamza",
-    lieuNaissance: "Hamza",
-    nationalite: "Hamza",
-    telephone: "884151121",
-    adressResedence: "Hamza",
+    lastname_fr: '',
+    firstname_fr: '',
+    lastname_ar: '',
+    firstname_ar: '',
+    dateNaissance: '',
+    lieuNaissance: '',
+    nationalite: '',
+    telephone: '',
+    address: '',
     //etape3
-    nomPere: "Hamza",
-    professionPere: "Hamza",
-    nomMere: "Hamza",
-    professionMere: "Hamza",
-    adresseParent: "Hamza",
-    teleParent: "884151121",
+    nom_Prenom_Pere: '',
+    profession_Pere: '',
+    nom_Prenom_mere: '',
+    profession_mere: '',
+    adresse_parent: '',
+    teleParent: '',
     //etape 4
-    filiere: "Hamza",
-    niveau: "Hamza",
-    typeBac: "Hamza",
-    AnneeObtention: "Hamza",
-    mention: "Hamza",
-    lycee: "Hamza",
-    delegation: "Hamza",
-    academie: "Hamza",
+    id_filiere: '',
+    niveau: '',
+    type_Bac: '',
+    annee_Bac: '',
+    mention: '',
+    lycee: '',
+    delegue: '',
+    academie: '',
+    
     //externe
-    diplomePrecedent: "Hamza",
-    etablissement: "Hamza",
-    ville: "Hamza",
+    diplomePrecedent: '',
+    etablissement: '',
+    ville: '',
     externe: false,
-    photo: "Hamza",
+    photo: '',
   });
+
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -135,6 +139,33 @@ export const Checkout = () => {
     // reader.readAsDataURL(formData.photo);
     // const imageUrl = reader.result;
     // console.log(imageUrl);
+
+    let data = new FormData();
+    data.append('photo', formData.photo);
+    data.append('name', formData.photo.name);
+    fetch('http://localhost:4000/etuds/multiple', {
+      method: 'POST',
+      body: data,
+    })
+      .then(response => {
+        this.setState({ error: '', msg: 'Sucessfully uploaded file' });
+      })
+      .catch(err => {
+        this.setState({ error: err });
+      });
+
+    formData.photo = formData.photo.name;
+    let url2 = 'http://localhost:4000/etuds/add';
+    let data2 = formData;
+    fetch(url2, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(data2),
+    });
+
     const PDF = () => (
       <div>
         <PDFDownloadLink
@@ -142,19 +173,19 @@ export const Checkout = () => {
           fileName="votre recu.pdf"
         >
           {({ blob, url, loading, error }) =>
-            loading ? "Loading document..." : "télécharger maintenent!"
+            loading ? 'Loading document...' : 'télécharger maintenent!'
           }
         </PDFDownloadLink>
       </div>
     );
 
-    ReactDOM.render(<PDF />, document.getElementById("root"));
+    ReactDOM.render(<PDF />, document.getElementById('root'));
   };
-  const getStepContent = (step) => {
+  const getStepContent = step => {
     switch (step) {
       case 0:
         return (
-          <Etape1
+          <Google
             formData={formData}
             setFormData={setFormData}
             classes={classes}
@@ -166,7 +197,7 @@ export const Checkout = () => {
         );
       case 1:
         return (
-          <Etape2
+          <Etape1
             formData={formData}
             setFormData={setFormData}
             classes={classes}
@@ -178,7 +209,7 @@ export const Checkout = () => {
         );
       case 2:
         return (
-          <Etape3
+          <Etape2
             formData={formData}
             setFormData={setFormData}
             classes={classes}
@@ -190,7 +221,7 @@ export const Checkout = () => {
         );
       case 3:
         return (
-          <Etape4
+          <Etape3
             formData={formData}
             setFormData={setFormData}
             classes={classes}
@@ -201,6 +232,18 @@ export const Checkout = () => {
           />
         );
       case 4:
+        return (
+          <Etape4
+            formData={formData}
+            setFormData={setFormData}
+            classes={classes}
+            handleBack={handleBack}
+            handleNext={handleNext}
+            activeStep={activeStep}
+            steps={steps}
+          />
+        );
+      case 5:
         return (
           <Etape5
             formData={formData}
@@ -213,26 +256,20 @@ export const Checkout = () => {
           />
         );
       default:
-        throw new Error("Unknown step");
+        throw new Error('Unknown step');
     }
   };
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            ENSAS
-          </Typography>
-        </Toolbar>
-      </AppBar>
+
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
             inscription
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map((label) => (
+            {steps.map(label => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
               </Step>
@@ -256,8 +293,8 @@ export const Checkout = () => {
                     className={classes.button}
                     onClick={recuHnadler}
                   >
-                    {" "}
-                    valider mon inscription{" "}
+                    {' '}
+                    valider mon inscription{' '}
                   </Button>
                 </Typography>
               </React.Fragment>

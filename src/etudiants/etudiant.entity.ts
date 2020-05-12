@@ -1,5 +1,5 @@
 import { Entity, BaseEntity, PrimaryColumn,ManyToOne, Column,Double } from "typeorm";
-import * as bcrypt from 'bcrypt';
+
 import { Filiere } from "src/filieres/filiere.entity";
 
 @Entity()
@@ -11,18 +11,18 @@ export class etudiant extends BaseEntity{
     @Column("varchar", { length: 30 })
     cin:string;
 
-    @Column("varchar", { length: 100 })
+    @Column("varchar", { length: 30 })
     password:string;
-
+    @Column("varchar", { length: 30 })
+    confirmPassword:string
     @Column("varchar", { length: 30 })
     email:string;
-
+    @Column("varchar", { length: 30 })
+    confirmEmail:string;
     @Column("double")
     note:Double;
-
-    @Column("varchar", { length:100})
-    pass_salt:string;
-
+    @Column()
+    externe:boolean;
 
    
     @Column("varchar", { length: 30 })
@@ -46,23 +46,36 @@ export class etudiant extends BaseEntity{
     @Column("varchar", { length: 20 })
     telephone:string;
 
-    @Column("varchar", { length: 100 })
+    @Column("varchar", { length: 30 })
      nom_Prenom_Pere:string;
-
-    @Column("varchar", { length: 100 })
+    @Column("varchar", { length: 30 })
+    teleParent:string;
+    @Column("varchar", { length: 30 })
     profession_Pere:string;
-
-    @Column("varchar", { length: 100 })
+ 
+    @Column("varchar", { length: 40 })
     nom_Prenom_mere:string;
+    @Column("varchar", { length: 40 })
+    dateNaissance:string;
+    @Column("varchar", { length: 40 })
+    lieuNaissance:string;
+    @Column("varchar", { length: 40 })
+    diplomePrecedent:string;
+    @Column("varchar", { length: 40 })
+    etablissement:string;
+    
+    @Column("varchar", { length: 40 })
+    ville:string;
 
-    @Column("varchar", { length: 100 })
+
+    @Column("varchar", { length: 50 })
     profession_mere:string;
 
-    @Column("varchar", { length: 100})
+    @Column("varchar", { length: 10 })
     adresse_parent:string;
 
-    @Column("varchar", { length: 30 })
-    parents_phone:string;
+    /*@Column("varchar", { length: 30 })
+    parents_phone:string;*/
 
     @Column("varchar", { length: 30 })
     annee_Bac:string;
@@ -70,11 +83,11 @@ export class etudiant extends BaseEntity{
     @Column("varchar", { length: 100})
     type_Bac:string;
 
-    @Column("varchar", { length: 100 })
+    @Column("varchar", { length: 1100 })
     mention:string;
 
 
-    @Column("varchar", { length: 100 })
+    @Column("varchar", { length: 1100 })
     lycee:string;
 
     @Column("varchar", { length: 100})
@@ -84,10 +97,11 @@ export class etudiant extends BaseEntity{
     academie:string;
 
     @Column("varchar", { length: 100 })
-    picture:string;
+    photo:string;
 
 
-
+    @Column()
+    id_filiere:Number;
     
     @Column("varchar", { length: 100 })
     niveau:string;
@@ -100,13 +114,19 @@ export class etudiant extends BaseEntity{
     @Column("varchar", { length: 100 })
     status:string;
 
-    @Column("varchar", { length: 100 })
-    Type_diplome:string;
 
-    async validatePassword(password:string):Promise<Boolean>{
-        const  hash=await bcrypt.hash(password,this.pass_salt);
-         return hash===this.password;
-     }
+    
+    @Column()
+    classement:number;
+
+    @Column()
+    choixFilere1:number;
+    @Column()
+    choixFilere2:number;
+    @Column()
+    choixFilere3:number;
+    @Column()
+    choixFilere4:number;
 
  
 }

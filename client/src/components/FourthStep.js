@@ -68,10 +68,10 @@ export default class FourthStep extends Component {
                          
                    <NativeSelect style={styles}   defaultValue={values.status} onChange={this.props.handleChange('status')}>
                    
-                   <option  value="externe">etudiant externe</option>
-                   <option  value="cp1"> etudiant cp1</option>
-                   <option  value="cp2"> etudiant cp2</option>
-                   <option  value="GI">etudinat ingenieur</option>
+                   <option  value="etudiant externe">etudiant externe</option>
+                   <option  value="etudiant cp1"> etudiant cp1</option>
+                   <option  value="etudiant cp2"> etudiant cp2</option>
+                   <option  value="etudinat ingenieur">etudinat ingenieur</option>
                   
                    </NativeSelect>
 

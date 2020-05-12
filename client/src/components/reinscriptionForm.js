@@ -8,7 +8,12 @@ import FourthStep from './FourthStep';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Steps, Button, message } from 'antd';
 import { DownloadOutlined,CheckCircleOutlined } from '@ant-design/icons';
+import { Layout, Avatar, Menu, Breadcrumb} from 'antd';
+
+import { Cricketer, Bowling, TestCareer } from './Cricketer2';
 import TestStep from './TestSep'
+
+const { Content } = Layout;
 const Step = Steps.Step;
 
 
@@ -21,7 +26,7 @@ const Step = Steps.Step;
         token:'',
         cin:'',
         massar:'',
-   //     email:'',
+        email:'',
         firstname_fr:'',
         lastname_fr:'',
         firstname_ar:'',
@@ -29,7 +34,7 @@ const Step = Steps.Step;
         date_Naissance:'',
         lieu_Naissance:'',
 
-        picture:'4.jpg',
+        picture:'default_user.jpg',
         nationalite:'',
         telephone:'',
         address:'',
@@ -38,6 +43,7 @@ const Step = Steps.Step;
         nom_Prenom_mere:'',
         profession_mere:'',
         adresse_parent:'',
+        adresse:'',
         id_filiere:'',
         niveau:'',
         type_Bac:'',
@@ -61,7 +67,7 @@ const Step = Steps.Step;
         this.state2={
             cin:'',
             massar:'',
-       //     email:'',
+             email:'',
             firstname_fr:'',
             lastname_fr:'',
             firstname_ar:'',
@@ -141,7 +147,7 @@ const Step = Steps.Step;
 
 
       uploadFile = (event) => {
-       event.preventDefault();
+        event.preventDefault();
         this.setState({error: '', msg: ''});
         if(!this.state.picture2) {
           this.setState({error: 'Please upload a file.'})
@@ -164,7 +170,8 @@ const Step = Steps.Step;
         });
 
 
-        this.state2.picture=this.state.picture2.name;
+        this.state.picture=this.state.picture2.name;
+
         this.state2.firstname_ar=this.state.firstname_ar;
         this.state2.firstname_fr=this.state.firstname_fr;
         this.state2.lastname_ar=this.state.lastname_ar;
@@ -172,7 +179,7 @@ const Step = Steps.Step;
         this.state2.cin=this.state.cin;
         this.state2.nationalite=this.state.nationalite;
         this.state2.telephone=this.state.telephone;
-
+        this.state2.email=this.state.email;
         this.state2.address=this.state.address;
         this.state2.nom_Prenom_Pere=this.state.nom_Prenom_Pere;
         this.state2.profession_Pere=this.state.profession_Pere;
@@ -247,8 +254,8 @@ const Step = Steps.Step;
 
       render() {
         const { current } = this.state;
-        const {cin,massar,password}=this.state;
-        const values_step1={cin,massar,password};
+        const {cin,massar,password,email}=this.state;
+        const values_step1={cin,massar,password,email};
         const {picture,firstname_fr, lastname_fr,firstname_ar,nationalite, telephone,address, lastname_ar,date_Naissance,lieu_Naissance}=this.state;
         const values_step2={picture,firstname_fr, lastname_fr,firstname_ar,nationalite, telephone,address, lastname_ar,date_Naissance,lieu_Naissance};
         const {nom_Prenom_Pere,profession_Pere,nom_Prenom_mere,profession_mere,adresse_parent}=this.state;
@@ -287,42 +294,39 @@ const Step = Steps.Step;
           title: '',
           content: <MuiThemeProvider>
       
-        {this.state.valide===true
+        {this.state.valide==true
          &&
          <div>
          <h6 className="suc">Vous etes inscrit avec sucess <CheckCircleOutlined /></h6>
-        <div className="styleTab">
-     
-        
-          <img src={require(`@../../../uploads/${this.state.picture}`)} class="logo2"/>
-          <br></br>
-           <table >
-             <tr className="trStyle"><th>Massar</th><th  className="esp">{this.state.massar}</th></tr>
-             <tr className="trStyle"><th>CIN</th><th  className="esp">{this.state.cin}</th></tr>
-             <tr className="trStyle"><th>Le nom</th><th className="esp">{this.state.firstname_fr}</th></tr>
+         <div >
+         <Content style={{ padding: '0 50px' }}>
+        <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item></Breadcrumb.Item>
+          </Breadcrumb>
+    
             
-             <tr className="trStyle"><th>Le Prenom</th><th className="esp">{this.state.lastname_fr}</th></tr>
-             <tr className="trStyle"><th>Nationalité</th><th className="esp">{this.state.nationalite}</th></tr>
-             <tr className="trStyle"><th>Niveau</th><th className="esp">{this.state.niveau}</th></tr>
-             <tr className="trStyle"><th>Adresse</th><th className="esp">{this.state.address}</th></tr>
-             <tr className="trStyle"><th>Telephone</th><th  className="esp">{this.state.telephone}</th></tr>
-           </table>
-           <br></br>
+            <Cricketer name={this.state.firstname_fr+"  "+this.state.lastname_fr}  email={this.state.email}  avatarSrc={require(`@../../../uploads/${this.state.picture}`)}>
+              <TestCareer CIN={this.state.cin} >
+                <Bowling Niveau={this.state.niveau} massar={this.state.massar} address={this.state.address} />
+              </TestCareer>
+        
+            </Cricketer>
+         
+          
+        </Content>
+           
        
+  
          
 
            </div>
+          
+              <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
            <Button type="primary" onClick={this.unduhPdf.bind(this)}  icon={<DownloadOutlined />}>telecharger votre recu</Button>
            <br></br><br></br>
            </div> 
         }
-           {this.state.valide===false
-              &&
-              <div><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-              <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-              <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-              <br></br><br></br></div>
-             }
+          
      
           </MuiThemeProvider>,
         }];
@@ -373,7 +377,6 @@ const Step = Steps.Step;
 
 export default reinscriptionForm ;
 const formStyle={
-marginLeft:'400px',
-width:'45%'
-
+  marginLeft:'250px',
+  width:'56%'
 }

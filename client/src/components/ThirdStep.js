@@ -40,7 +40,7 @@ export default class ThirdStep extends Component {
                    </NativeSelect>
                    
                    <br></br>
-                   <TextField style={stylesPar} floatingLabelFixed="Adresse" placeholder="Residence,quartier, ville,pays" floatingLabelText="Adresse" ></TextField><br></br>
+                   <TextField style={stylesPar} floatingLabelFixed="Adresse" placeholder="Residence,quartier, ville,pays" floatingLabelText="Adresse"   defaultValue={values.adress} onChange={this.props.handleChange('adress')} ></TextField><br></br>
 
                    <TextField style={stylesPar} floatingLabelFixed="Telephone" placeholder="+212" floatingLabelText="Telephone"></TextField><br></br>
 

@@ -13,9 +13,47 @@ import {
 } from 'antd';
 import '../App.css';
 
-function choix(){
-  
+export default class choix extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+   
+    note:0,
+    classement:0,
 
+  
+    choixFilere1:0,
+
+    choixFilere2:0,
+
+    choixFilere3:0,
+    
+    choixFilere4:0
+
+    }
+    }
+
+    submit(){
+      const massar=localStorage.getItem("massar");
+      let data=this.state;
+      fetch('http://localhost:4000/etuds/'+massar+'/update', {
+        method: 'PUT',
+        headers:
+        {
+         "Content-Type":"application/json",
+         "Accept":"application/json",
+
+        },
+        body:JSON.stringify(data)
+
+    
+    });
+      alert(('votre demande est bien envoyer'));
+  
+  }
+
+
+  render() {
   return (
     <div>
       <Form
@@ -32,54 +70,57 @@ function choix(){
         
    
       >
-        <fieldset>
-            <h6 style={{margin:'40px 340px',color:'#00001a'}}>Formulaire de Choix De Filière :</h6>
-       
+
+            <h5 style={{margin:'50px 340px',color:'#00001a',marginLeft:'450px'}}>Formulaire de Choix De Filière :</h5>
+
         <Form.Item label="La Note :">
-         <Input type="text"  placeholder="Votre  note"  />
+         <Input type="text"  placeholder="Votre  note"  value={this.state.note}   onChange={(data)=>{this.setState({note:data.target.value})}} />
         </Form.Item>
         <Form.Item label="Le classement :">
-         <Input type="text"  placeholder="Votre  classement"    />
+         <Input type="text"  placeholder="Votre  classement"    value={this.state.classement}   onChange={(data)=>{this.setState({classement:data.target.value})}} />
         </Form.Item>
         <Form.Item label="Choix 1 :">
-          <Select>
-          <Select.Option selected>---Le premier choix---</Select.Option>
-            <Select.Option value="CP">CP</Select.Option>
-            <Select.Option value="Génie Informatique">Génie Informatique</Select.Option>
-            <Select.Option value="Génie Réseaux">Génie Réseaux</Select.Option>
-            <Select.Option value="GPMC">GPMC</Select.Option>
-          </Select>
+          
+    
+          <select name="type_bac" className="form-control" value={this.state.choixFilere1}   onChange={(data)=>{this.setState({choixFilere1:data.target.value})}}>
+                        <option value="0">---Le premier choix---</option>
+                        <option value="1">Génie Informatique</option>
+                        <option  value="2">Génie Industriel</option>
+                        <option value="3">GPMC</option>
+                        <option value="4">Reseau Telecom </option>
+          </select>
+
         </Form.Item>
 
         <Form.Item label="Choix 2 :">
-          <Select>
-          <Select.Option selected>---Le deuxième choix---</Select.Option>
-            <Select.Option value="CP">CP</Select.Option>
-            <Select.Option value="Génie Informatique">Génie Informatique</Select.Option>
-            <Select.Option value="Génie Réseaux">Génie Réseaux</Select.Option>
-            <Select.Option value="GPMC">GPMC</Select.Option>
-          </Select>
+        <select name="type_bac" className="form-control" value={this.state.choixFilere2}   onChange={(data)=>{this.setState({choixFilere2:data.target.value})}}>
+                        <option value="0">---Le deuxiem choix---</option>
+                        <option value="1">Génie Informatique</option>
+                        <option  value="2">Génie Industriel</option>
+                        <option value="3">GPMC</option>
+                        <option value="4">Reseau Telecom </option>
+          </select>
         </Form.Item>
 
         <Form.Item label="Choix 3 :">
-          <Select>
-          <Select.Option selected>---Le troisième choix---</Select.Option>
-            <Select.Option value="CP">CP</Select.Option>
-            <Select.Option value="Génie Informatique">Génie Informatique</Select.Option>
-            <Select.Option value="Génie Réseaux">Génie Réseaux</Select.Option>
-            <Select.Option value="GPMC">GPMC</Select.Option>
-          </Select>
+        <select name="type_bac" className="form-control" value={this.state.choixFilere3}   onChange={(data)=>{this.setState({choixFilere3:data.target.value})}}>
+                        <option value="0">---Le troisieme choix---</option>
+                        <option value="1">Génie Informatique</option>
+                        <option  value="2">Génie Industriel</option>
+                        <option value="3">GPMC</option>
+                        <option value="4">Reseau Telecom </option>
+          </select>
         </Form.Item>
 
 
         <Form.Item label="Choix 4 :">
-          <Select>
-          <Select.Option selected>---Le dernier choix---</Select.Option>
-            <Select.Option value="CP">CP</Select.Option>
-            <Select.Option value="Génie Informatique">Génie Informatique</Select.Option>
-            <Select.Option value="Génie Réseaux">Génie Réseaux</Select.Option>
-            <Select.Option value="GPMC">GPMC</Select.Option>
-          </Select>
+        <select name="type_bac" className="form-control" value={this.state.choixFilere4}   onChange={(data)=>{this.setState({choixFilere4:data.target.value})}}>
+                        <option value="0">---Le quatrieme choix---</option>
+                        <option value="1">Génie Informatique</option>
+                        <option  value="2">Génie Industriel</option>
+                        <option value="3">GPMC</option>
+                        <option value="4">Reseau Telecom </option>
+          </select>
         </Form.Item>
 
         
@@ -88,13 +129,13 @@ function choix(){
         
        
         <Form.Item label="">
-          <Button type='dashed' style={{float:'right', background:'#00001a',color:'white',margin:'10px 2px', width:'50%'}}>Valider votre choix</Button>
+          <Button type='dashed' style={{float:'right', background:'#00001a',color:'white',margin:'10px 2px', width:'50%'}}   onClick={()=>{this.submit()}}>Valider votre choix</Button>
         </Form.Item>
-        </fieldset>
+    
       </Form>
     </div>
   );
 }
 
-export default choix;
+}
 

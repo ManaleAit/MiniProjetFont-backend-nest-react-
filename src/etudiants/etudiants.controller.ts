@@ -5,10 +5,10 @@ import { etudiant } from './etudiant.entity';
 import  { imageFileFilter } from './imageFileFilter';
 import {editFileName} from './editFileName';
 import {FilesInterceptor} from '@nestjs/platform-express';
+
 import { diskStorage } from 'multer';
 import { AuthDTO } from 'src/candidatures/dto/AuthDTO';
-
-@Controller('etudiant')
+@Controller('etuds')
 export class EtudiantsController {
     constructor(private etudiantsService:etudiantsService){ }
 
@@ -39,12 +39,21 @@ export class EtudiantsController {
       return this.etudiantsService.delete(id);
     }  
 
+    @Put('/choixFiliere')
+    async  choixFiliere(@Param('nbplaceInfo') nbplaceInfo,@Param('nbplaceIndus') nbplaceIndus ,@Param('nbplaceGPMC') nbplaceGPMC ,@Param('nbplaceGTR') nbplaceGTR){
+      return this.etudiantsService.choixFiliere(nbplaceInfo,nbplaceIndus,nbplaceGPMC ,nbplaceGTR);
+    }
 
+    @Get(':massar/filiere')
+    async  getdiliere(@Param('massar') ma:string){
+        return  this.etudiantsService.getByMassarFiliere(ma);
+    }
+    
 
 
 @Post('multiple')
 @UseInterceptors(
-  FilesInterceptor('picture2', 20, {
+  FilesInterceptor('photo', 20, {
     storage: diskStorage({
       destination: './uploads',
       filename: editFileName,

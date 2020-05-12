@@ -25,7 +25,7 @@ import '../App.css';
                     <br></br>
                     <TextField style={styles} floatingLabelFixed="Email" floatingLabelText="Email" defaultValue={values.email} onChange={this.props.handleChange('email')} name="email"></TextField>
 
-                    <TextField style={styles}  floatingLabelFixed="Email Confirmation" floatingLabelText="Email Confirmation" defaultValue={values.email} ></TextField>
+                    <TextField style={styles}  floatingLabelFixed="Email Confirmation" floatingLabelText="Email Confirmation" ></TextField>
 
                     <br></br>
               

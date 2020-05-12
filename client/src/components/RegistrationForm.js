@@ -8,7 +8,11 @@ import FourthStep from './FourthStep';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Steps, Button, message } from 'antd';
 import { DownloadOutlined,CheckCircleOutlined } from '@ant-design/icons';
-import TestStep from './TestSep'
+import { Cricketer, Bowling, TestCareer } from './Cricketer2';
+import TestStep from './TestSep';
+import { Layout, Avatar, Menu, Breadcrumb} from 'antd';
+const { Content } = Layout;
+
 const Step = Steps.Step;
 
 
@@ -29,7 +33,7 @@ const Step = Steps.Step;
         date_Naissance:'',
         lieu_Naissance:'',
 
-        picture:'4.jpg',
+        picture:'default_user.jpg',
         nationalite:'',
         telephone:'',
         address:'',
@@ -53,6 +57,7 @@ const Step = Steps.Step;
         password:'',
         picture2:'',
         valide:false
+
 
 
         };
@@ -226,27 +231,30 @@ const Step = Steps.Step;
          &&
          <div>
          <h6 className="suc">Vous etes inscrit avec sucess <CheckCircleOutlined /></h6>
-        <div className="styleTab">
-     
+         <div >
+         <Content style={{ padding: '0 50px' }}>
+        <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item></Breadcrumb.Item>
+          </Breadcrumb>
+    
+            
+            <Cricketer name={this.state.firstname_fr+"  "+this.state.lastname_fr}  email={this.state.email}  avatarSrc={require(`@../../../uploads/${this.state.picture}`)}>
+              <TestCareer CIN={this.state.cin} >
+                <Bowling Niveau={this.state.niveau} massar={this.state.massar} address={this.state.address} />
+              </TestCareer>
         
-          <img src={require(`@../../../uploads/${this.state.picture}`)} class="logo2"/>
-          <br></br>
-           <table >
-             <tr className="trStyle"><th>Massar</th><th  className="esp">{this.state.massar}</th></tr>
-             <tr className="trStyle"><th>CIN</th><th  className="esp">{this.state.cin}</th></tr>
-             <tr className="trStyle"><th>Le nom</th><th className="esp">{this.state.laststname_fr}</th></tr>
-             <tr className="trStyle"><th>L'Email</th><th className="esp">{this.state.email}</th></tr>
-             <tr className="trStyle"><th>Le Prenom</th><th className="esp">{this.state.firstname_fr}</th></tr>
-             <tr className="trStyle"><th>Nationalité</th><th className="esp">{this.state.nationalite}</th></tr>
-             <tr className="trStyle"><th>Niveau</th><th className="esp">{this.state.niveau}</th></tr>
-             <tr className="trStyle"><th>Adresse</th><th className="esp">{this.state.address}</th></tr>
-             <tr className="trStyle"><th>Telephone</th><th  className="esp">{this.state.telephone}</th></tr>
-           </table>
-           <br></br>
+            </Cricketer>
+         
+          
+        </Content>
+           
        
+  
          
 
            </div>
+          
+              <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
            <Button type="primary" onClick={this.unduhPdf.bind(this)}  icon={<DownloadOutlined />}>telecharger votre recu</Button>
            <br></br><br></br>
            </div> 
@@ -300,7 +308,7 @@ const Step = Steps.Step;
 
 export default RegistrationForm ;
 const formStyle={
-marginLeft:'400px',
-width:'45%'
+marginLeft:'350px',
+width:'50%'
 
 }

@@ -22,6 +22,7 @@ export default class Connexion extends React.Component{
         this.formSubmit = this.formSubmit.bind(this)
     }
 
+    
     onChange(ev){
         this.setState({
             [ev.target.name]: ev.target.value
@@ -29,11 +30,14 @@ export default class Connexion extends React.Component{
     }
 
     async formSubmit(ev){
+        localStorage.setItem("massar",this.state.massar)
         ev.preventDefault()
         const {massar,email, password} = this.state
         try {
             const token = await Axios.post("http://localhost:4000/etuds/signin", {massar, email,password})
             localStorage.setItem("token", token)
+         
+            
             this.setState({
                 loggedIn: true
               
@@ -42,11 +46,17 @@ export default class Connexion extends React.Component{
             this.setState({
                 error: err.message
             })
+
+            
+
+            
         }
 
          if(this.state.loggedIn === false){
              alert('le mot de passe est incorrect');
+             
          }
+        
 
     }
 
@@ -54,21 +64,21 @@ export default class Connexion extends React.Component{
 
     render() {
         if(this.state.loggedIn === true){
-           //localStorage.removeItem("token")
-            return <Redirect to="/EspaceSudent" />
+           // localStorage.setItem("massar",this.state.massar)
+            return <Redirect to="/App2" />
       
         }
         return (
           
-            <div className="register-photo">
+            <div className="register-photo" style ={{backgroundColor:'white'}}>
                
-            <div className="form-container">
+            <div className="form-container"  >
                 
 
                 <img src={require('../images/index.jpg')} class="logo"/>
                <div class="sizeDIV">
                 <form onSubmit={this.formSubmit}   >
-                    <h2 className="text-center"><strong>Se connecter</strong></h2>
+                    <h2 className="text-center"><strong  style={{color:'#054663'}}>Se connecter</strong></h2>
                     <div className="form-group">
                     <input type="text" placeholder="massar" value={this.state.massar} onChange={this.onChange} name="massar"   className="form-control" /><br></br>                    </div>
                     <div className="form-group">
@@ -80,9 +90,10 @@ export default class Connexion extends React.Component{
                  
 
              
-                <br></br><input type="submit"   value="Connexion"  className="btn  btn-dark btn-block" />
+                <br></br><input type="submit"   value="Connexion"  className="btn  btn-dark btn-block "  style={{backgroundColor:'#054663'}}  />
               
                     <br></br>
+                    <div style={{marginLeft:50}}>
                     <GoogleLogin
                      clientId="455721042123-9trboheb9utib5npgb42eruv5h7qt2cf.apps.googleusercontent.com"
                      buttonText="Connect with google"
@@ -92,6 +103,8 @@ export default class Connexion extends React.Component{
                      cookiePolicy={'single_host_origin'}
                      />
                  
+                    </div>
+                   
                     <a className="already" href="/connexion">You already have an account? Login here.</a>
                 </form>
                 </div>

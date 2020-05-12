@@ -23,4 +23,6 @@ export class Filiere extends BaseEntity{
     @OneToMany(type =>etudiant, etudiant=> etudiant.filiere)
     liste_etudiant: etudiant[];
 
+
+
 }

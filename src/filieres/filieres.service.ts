@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Filiere } from './filiere.entity';
 import { FiliereRepository } from './filiere.repository';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -23,5 +23,16 @@ export class FilieresService {
         await this.filiereRepository.save(filiere);
         return filiere;
     }
+    
+    async getById(id_filiere:number): Promise<Filiere> {
+        const found= await this.filiereRepository.findOne(id_filiere);
+  
+        if(!found){
+  
+          throw new NotFoundException('this filiere  not found !! ')
+        }
+        return found;
+    }
+  
 
 }

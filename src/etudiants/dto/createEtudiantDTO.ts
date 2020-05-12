@@ -6,20 +6,22 @@ import { isNumber } from "util";
 export class CreateEtudiantDTO{
 
 
-    
+    lieuNaissance:string
+    dateNaissance:string;
 
     massar:string;
 
     cin:string;
 
     password:string;
-
+    confirmPassword:string;
     email:string;
-
+    
+    confirmEmail:string;
 
     note:Double;
 
-
+    externe:boolean;
     lastname_fr:string;
 
 
@@ -53,9 +55,8 @@ export class CreateEtudiantDTO{
    
     adresse_parent:string;
 
-    parents_phone:string;
-
     annee_Bac:string;
+
 
     type_Bac:string;
 
@@ -70,20 +71,31 @@ export class CreateEtudiantDTO{
 
  
     academie:string;
+   
 
-
-    picture:string;
+    photo:string;
 
     niveau:string;
 
     id_filiere:number;
 
-
+    teleParent:string;
     status:string;
 
-    Type_diplome:string;
+    diplomePrecedent:string;
+    etablissement:string;
+    ville:string;
 
+  
+    classement:number;
 
+  
+    choixFilere1:number;
+
+    choixFilere2:number;
+
+    choixFilere3:number;
     
+    choixFilere4:number;
 
 }

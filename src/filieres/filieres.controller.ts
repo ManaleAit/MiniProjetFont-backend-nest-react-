@@ -1,5 +1,5 @@
 
-import { Controller, Get, Post, Body, UseGuards, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Delete, Param } from '@nestjs/common';
 import { FilieresService } from './filieres.service';
 import { Filiere } from './filiere.entity';
 import { AuthGuard } from '@nestjs/passport';
@@ -11,6 +11,10 @@ export class FilieresController {
     @Get("")
     async getAllFilieres():Promise<Filiere[]>{
         return await this.filiereService.getAllFilieres();
+    }
+    @Get(':id_filiere')
+    async  getTudo(@Param('id_filiere') fil:number){
+        return  this.filiereService.getById(fil);
     }
 
     @Post("/add")
