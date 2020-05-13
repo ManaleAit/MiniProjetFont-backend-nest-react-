@@ -10,7 +10,7 @@ export default class fil extends Component {
             <div className="content-wrapper">
            
             <section className="content-header">
-            <h1>Choix de filière</h1>
+            <h1  style={{marginLeft:300,color:'#054663'}}>Choix de filière est ouvert pour cycle préparatoire 2</h1>
               <ol className="breadcrumb">
                <li className="active">Filière</li>
               </ol>
@@ -20,11 +20,11 @@ export default class fil extends Component {
 
   <form className="form-horizontal">
 
-    <div className="box-body">
+    <div className="box-body"   style={{marginLeft:150}}>
     <div className="form-group">
         <label htmlFor="inputPassword3" className="col-sm-2 control-label">Classement</label>
         <div className="col-sm-10">
-         <input  type="text"  className="form-control"  />
+         <input  type="text"  className="form-control"  placeholder="classement"/>
         </div>
       </div>
       <div className="form-group">
@@ -68,8 +68,8 @@ export default class fil extends Component {
     </div>
  
     <div className="box-footer">
-      <button type="reset" className="btn btn-default text-white  bg-danger">Annuler</button>
-      <button type="submit" className="btn btn-info pull-right"  style={{backgroundColor:'#272341'}}>Envoyer</button>
+      <button type="reset" className="btn btn-default text-white  bg-primary">Annuler</button>
+      <button type="submit" className="btn btn-info pull-right  bg-primary" >Envoyer</button>
     </div>
     
   </form>

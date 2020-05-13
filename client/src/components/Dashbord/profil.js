@@ -6,7 +6,7 @@ export default class profil extends Component {
  
   <div className="content-wrapper">
     <section className="content-header">
-      <h1>Mon profil</h1>
+      <h1   style={{marginLeft:540,color:'#054663'}}>Mon profil</h1>
       <ol className="breadcrumb">
         <li className="active">Mes informations</li>
       </ol>

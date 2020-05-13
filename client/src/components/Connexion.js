@@ -31,17 +31,20 @@ export default class Connexion extends React.Component{
 
     async formSubmit(ev){
         localStorage.setItem("massar",this.state.massar)
+      
         ev.preventDefault()
         const {massar,email, password} = this.state
         try {
             const token = await Axios.post("http://localhost:4000/etuds/signin", {massar, email,password})
             localStorage.setItem("token", token)
-         
+            localStorage.setItem("nbVisite","0")
             
             this.setState({
                 loggedIn: true
               
             })
+
+            
         } catch (err) {
             this.setState({
                 error: err.message

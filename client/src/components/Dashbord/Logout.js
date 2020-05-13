@@ -8,10 +8,11 @@ import {Route,Redirect} from "react-router-dom";
         super()
         // token remove
         localStorage.removeItem("token")
-        localStorage.removeItem("massar")
-
-        localStorage.removeItem("formassar");
-        localStorage.removeItem("lastname_fr");
+       
+        localStorage.removeItem("nbVisite")
+       // localStorage.removeItem("massar")
+       // localStorage.removeItem("formassar");
+       // localStorage.removeItem("lastname_fr");
 
       
         localStorage.removeItem("cin"); 
@@ -20,27 +21,27 @@ import {Route,Redirect} from "react-router-dom";
 
         localStorage.removeItem("address"); 
 
- localStorage.removeItem("telephone"); 
+        localStorage.removeItem("telephone"); 
 
- localStorage.removeItem("nom_Prenom_Pere"); 
+        localStorage.removeItem("nom_Prenom_Pere"); 
 
- localStorage.removeItem("profession_Pere"); 
+        localStorage.removeItem("profession_Pere"); 
 
- localStorage.removeItem("nom_Prenom_mere"); 
+        localStorage.removeItem("nom_Prenom_mere"); 
 
- localStorage.removeItem("profession_mere");  
+        localStorage.removeItem("profession_mere");  
  
- localStorage.removeItem("adresse_parent"); 
+        localStorage.removeItem("adresse_parent"); 
 
- localStorage.removeItem("type_Bac");  
+        localStorage.removeItem("type_Bac");  
 
- localStorage.removeItem("annee_Bac");  
+        localStorage.removeItem("annee_Bac");  
 
- localStorage.removeItem("mention");
+        localStorage.removeItem("mention");
 
- localStorage.removeItem("lycee"); 
+        localStorage.removeItem("lycee"); 
 
- localStorage.removeItem("niveau"); 
+        localStorage.removeItem("niveau"); 
 
     }
 

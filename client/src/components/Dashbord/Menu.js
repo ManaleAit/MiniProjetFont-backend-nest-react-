@@ -8,6 +8,7 @@ export default class Menu extends Component {
 
   constructor(){
     super()
+
     let loggedIn = false
     
     const token = localStorage.getItem("token")
@@ -16,74 +17,84 @@ export default class Menu extends Component {
     this.state= {
    loggedIn
     }
-  
+    let tmp=0;
+ 
+    
 }
 
-async componentDidMount(){
-  const massar = localStorage.getItem('massar');
-  const res1 = await Axios.get('http://localhost:4000/etuds/' + massar);
 
-  const idfil = res1.data.id_filiere;
-
-  const formassar = res1.data.massar;
-  localStorage.setItem('formassar', formassar);
-  const lastname_fr = res1.data.lastname_fr;
-  localStorage.setItem('lastname_fr', lastname_fr);
-  const firstname_fr = res1.data.firstname_fr;
-  localStorage.setItem('firstname_fr', firstname_fr);
-  const cin = res1.data.cin;
-  localStorage.setItem('cin', cin);
-  const email = res1.data.email;
-  localStorage.setItem('email', email);
-  this.state.photo = res1.data.photo;
-  localStorage.setItem('photo', res1.data.photo);
-  const address = res1.data.address;
-  localStorage.setItem('address', address);
-  const diplomePrecedent = res1.data.address;
-  localStorage.setItem('diplomePrecedent',diplomePrecedent);
-  
-  const adresse_parent = res1.data.adresse_parent;
-  localStorage.setItem('adresse_parent', adresse_parent);
-
-  const telephone = res1.data.telephone;
-  localStorage.setItem('telephone', telephone);
-  const nom_Prenom_Pere = res1.data.nom_Prenom_Pere;
-  localStorage.setItem('nom_Prenom_Pere', nom_Prenom_Pere);
-  const profession_Pere = res1.data.profession_Pere;
-  localStorage.setItem('profession_Pere', profession_Pere);
-  const nom_Prenom_mere = res1.data.nom_Prenom_mere;
-  localStorage.setItem('nom_Prenom_mere', nom_Prenom_mere);
-  const profession_mere = res1.data.profession_mere;
-  localStorage.setItem('profession_mere', profession_mere);
-  const type_Bac = res1.data.type_Bac;
-  localStorage.setItem('type_Bac', type_Bac);
-  const annee_Bac = res1.data.annee_Bac;
-  localStorage.setItem('annee_Bac', annee_Bac);
-  const mention = res1.data.mention;
-  localStorage.setItem('mention', mention);
-  const lycee = res1.data.lycee;
-  localStorage.setItem('lycee', lycee);
-
-  const etablissement= res1.data.etablissement;
-  localStorage.setItem('etablissement', etablissement);
-  const niveau = res1.data.niveau;
-  
-  localStorage.setItem('niveau', niveau);
-  const confirmEmail= res1.data.confirmEmail;
-  localStorage.setItem('confirmEmail',confirmEmail);
-  const res2 = await Axios.get('http://localhost:4000/filieres/' + idfil);
-
-  const fill = res2.data.nom_filiere;
-  localStorage.setItem('fill', fill);
-
-  
-}
     logout(){
         this.setState({
             loggedIn: false
         })
+       
     }
+
+    async componentDidMount(){
+    
+    
+      const massar = localStorage.getItem('massar');
+      const res1 = await Axios.get('http://localhost:4000/etuds/' + massar);
+    
+      const idfil = res1.data.id_filiere;
+    
+      const formassar = res1.data.massar;
+      localStorage.setItem('formassar', formassar);
+      const lastname_fr = res1.data.lastname_fr;
+      localStorage.setItem('lastname_fr', lastname_fr);
+      const firstname_fr = res1.data.firstname_fr;
+      localStorage.setItem('firstname_fr', firstname_fr);
+      const cin = res1.data.cin;
+      localStorage.setItem('cin', cin);
+      const email = res1.data.email;
+      localStorage.setItem('email', email);
+      this.state.photo = res1.data.photo;
+      localStorage.setItem('photo', res1.data.photo);
+      const address = res1.data.address;
+      localStorage.setItem('address', address);
+      const diplomePrecedent = res1.data.address;
+      localStorage.setItem('diplomePrecedent',diplomePrecedent);
+      
+      const adresse_parent = res1.data.adresse_parent;
+      localStorage.setItem('adresse_parent', adresse_parent);
+    
+      const telephone = res1.data.telephone;
+      localStorage.setItem('telephone', telephone);
+      const nom_Prenom_Pere = res1.data.nom_Prenom_Pere;
+      localStorage.setItem('nom_Prenom_Pere', nom_Prenom_Pere);
+      const profession_Pere = res1.data.profession_Pere;
+      localStorage.setItem('profession_Pere', profession_Pere);
+      const nom_Prenom_mere = res1.data.nom_Prenom_mere;
+      localStorage.setItem('nom_Prenom_mere', nom_Prenom_mere);
+      const profession_mere = res1.data.profession_mere;
+      localStorage.setItem('profession_mere', profession_mere);
+      const type_Bac = res1.data.type_Bac;
+      localStorage.setItem('type_Bac', type_Bac);
+      const annee_Bac = res1.data.annee_Bac;
+      localStorage.setItem('annee_Bac', annee_Bac);
+      const mention = res1.data.mention;
+      localStorage.setItem('mention', mention);
+      const lycee = res1.data.lycee;
+      localStorage.setItem('lycee', lycee);
+    
+      const etablissement= res1.data.etablissement;
+      localStorage.setItem('etablissement', etablissement);
+      const niveau = res1.data.niveau;
+      
+      localStorage.setItem('niveau', niveau);
+      const confirmEmail= res1.data.confirmEmail;
+      localStorage.setItem('confirmEmail',confirmEmail);
+      const res2 = await Axios.get('http://localhost:4000/filieres/' + idfil);
+    
+      const fill = res2.data.nom_filiere;
+      localStorage.setItem('fill', fill);
+    
+    
+    }
+  
     render() {
+    
+     
       if(this.state.loggedIn === false){
         return <Redirect to="/logout" />
     }
@@ -140,7 +151,7 @@ async componentDidMount(){
         </li>
         
         <li className="treeview" >
-          <a href="#" className="text-white">
+          <a href="#" className="text-white" >
             <i className="fa fa-user  text-white" /> <span>Voir mon profil</span>
             <span className="pull-right-container">
               <i className="fa fa-angle-left pull-right" />

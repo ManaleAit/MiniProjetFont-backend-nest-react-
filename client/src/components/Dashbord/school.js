@@ -11,7 +11,7 @@ export default class school extends Component {
    <div className="content-wrapper">
   {/* Content Header (Page header) */}
   <section className="content-header">
-    <h1> Informations Importantes</h1>
+    <h1  style={{color:'#054663'}}> Informations Importantes</h1>
     <ol className="breadcrumb">
       <li className="active">Important!</li>
     </ol>
