@@ -1,0 +1,11 @@
+.Calendrier{
+    margin-left:9%;
+    margin-top:7%;
+    width: 80%;
+    height:100%;
+}
+
+.content-wrapper{
+    height:576px;
+  padding-bottom:-10%;
+}
