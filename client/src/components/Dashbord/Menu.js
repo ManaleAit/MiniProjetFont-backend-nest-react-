@@ -102,9 +102,9 @@ export default class Menu extends Component {
         return (
 <div>
 <Router basename="/">
-  <aside className="main-sidebar" style={{marginTop:56,backgroundColor:'#272341'}}>
+  <aside className="main-sidebar" style={{marginTop:56,backgroundColor:'#272341',height:840}}>
     
-    <section className="sidebar">
+    <section className="sidebar" style={{height:840}}>
     
       <div className="user-panel"  style={{marginTop:-40}}>
         <div className="pull-left image">
@@ -165,20 +165,6 @@ export default class Menu extends Component {
         </li>
 
 
-        <li className="treeview">
-          <a href="#" className="text-white"> 
-            <i className="fa fa-files-o text-white" />
-            <span className="text-white">Télécharger le reçu</span>
-            <span className="pull-right-container">
-              <i className="fa fa-angle-left pull-right  text-white" />
-            </span>
-
-          </a>
-          <ul className="treeview-menu">
-            <li><a href="#/reçu"  className="text-primary"><i className="fa fa-circle-o text-primary" /> Reçu de pré-inscription</a></li>
-            
-          </ul>
-        </li>
        
       
         <li className="treeview">

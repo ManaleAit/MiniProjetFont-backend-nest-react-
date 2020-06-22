@@ -16,6 +16,7 @@ export default class school extends Component {
       <li className="active">Important!</li>
     </ol>
   </section>
+  <br/>
   {/* Main content */}
   <section className="content">
    

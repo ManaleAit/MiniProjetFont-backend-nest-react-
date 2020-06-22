@@ -8,12 +8,13 @@ export default class profil extends Component {
  
   <div className="content-wrapper" style={{'min-Height': 8000}}>
   <div>
-    <section className="content-header">
-      <h1   style={{marginLeft:540,color:'#054663'}}>Mon profil</h1>
-      <ol className="breadcrumb">
-        <li className="active">Mes informations</li>
-      </ol>
-    </section>
+  <section className="content-header">
+    <h1  style={{color:'#054663'}}> Mon profil</h1>
+    <ol className="breadcrumb">
+      <li className="active">Mes informations !</li>
+    </ol>
+  </section>
+  <br/>
     {/* Main content */}
     <section className="content">
       <div className="row">
@@ -66,38 +67,33 @@ export default class profil extends Component {
            
           </div>
 
-          {/* /.box */}
+          {/* /.box */}   
           <div className="box">
             <div className="box-header">
-              <h3 className="box-title">baccalauréat</h3>
+              <h3 className="box-title">Diplome obtenu</h3>
             </div>
             {/* /.box-header */}
             <div className="box-body no-padding">
               <table className="table table-condensed">
+             
                 <tbody>
                   <tr>
-                    <td><span className="badge bg-green">Type du bac</span></td>
-                    <td>  {localStorage.getItem('type_Bac')}</td>
-                  </tr>
+                    <td><span className="badge badge-danger">Type du diplome</span></td>
+                    <td>{localStorage.getItem('diplomePrecedent')}</td>
+                    </tr>
+               
                   <tr>
-                    <td><span className="badge bg-green">Année du bac</span></td>
-                    <td>  {localStorage.getItem('annee_Bac')}</td>
+                    <td><span className="badge badge-danger">Mention</span></td>
+                    <td>{localStorage.getItem('mention')}</td>
+                    </tr>
+                    <tr>
+                    <td><span className="badge badge-danger">Etablissment</span></td>
+                    <td>  {localStorage.getItem('etablissement')}</td>
                   </tr>
-                  <tr>
-                    <td><span className="badge bg-green">Mention du bac</span></td>
-                    <td>  {localStorage.getItem('mention')}</td>
-                  </tr>
-                  <tr>
-                    <td><span className="badge bg-green"> Lycée du bac</span></td>
-                    <td>  { localStorage.getItem("lycee")}</td>
-                  </tr>
-                  <tr>
-                    <td><span className="badge bg-green"> Année du Bac</span></td>
-                    <td>  { localStorage.getItem("annee_Bac")}</td>
-                  </tr>
-                
+
                 </tbody></table>
             </div>
+            
           </div>
         </div>
 
@@ -146,33 +142,40 @@ export default class profil extends Component {
             {/* /.box-body */}
           </div>
           {/* /.box */}
-      <div className="box">
+
+          <div className="box">
             <div className="box-header">
-              <h3 className="box-title">Diplome obtenu</h3>
+              <h3 className="box-title">baccalauréat</h3>
             </div>
             {/* /.box-header */}
             <div className="box-body no-padding">
               <table className="table table-condensed">
-             
                 <tbody>
                   <tr>
-                    <td><span className="badge badge-danger">Type du diplome</span></td>
-                    <td>{localStorage.getItem('diplomePrecedent')}</td>
-                    </tr>
-               
-                  <tr>
-                    <td><span className="badge badge-danger">Mention</span></td>
-                    <td>{localStorage.getItem('mention')}</td>
-                    </tr>
-                    <tr>
-                    <td><span className="badge badge-danger">Etablissment</span></td>
-                    <td>  {localStorage.getItem('etablissement')}</td>
+                    <td><span className="badge bg-green">Type du bac</span></td>
+                    <td>  {localStorage.getItem('type_Bac')}</td>
                   </tr>
-
+                  <tr>
+                    <td><span className="badge bg-green">Année du bac</span></td>
+                    <td>  {localStorage.getItem('annee_Bac')}</td>
+                  </tr>
+                  <tr>
+                    <td><span className="badge bg-green">Mention du bac</span></td>
+                    <td>  {localStorage.getItem('mention')}</td>
+                  </tr>
+                  <tr>
+                    <td><span className="badge bg-green"> Lycée du bac</span></td>
+                    <td>  { localStorage.getItem("lycee")}</td>
+                  </tr>
+                  <tr>
+                    <td><span className="badge bg-green"> Année du Bac</span></td>
+                    <td>  { localStorage.getItem("annee_Bac")}</td>
+                  </tr>
+                
                 </tbody></table>
             </div>
-            
           </div>
+     
           
           <div className="box">
             <div className="box-header">

@@ -52,11 +52,11 @@ export default class fil extends Component {
             <div className="content-wrapper">
            
             <section className="content-header">
-            <h1  style={{marginLeft:300,color:'#054663'}}>Choix de filière est ouvert pour les 2 ème année cycle préparatoire </h1>
-              <ol className="breadcrumb">
-               <li className="active">Filière</li>
-              </ol>
-            </section>
+    <h1  style={{color:'#054663'}}> Choix de filière :</h1>
+    <ol className="breadcrumb">
+      <li className="active">Ouvert pour les 2ème année cycle préparatoire!</li>
+    </ol>
+  </section>
 
        <div className="box box-info">
 
