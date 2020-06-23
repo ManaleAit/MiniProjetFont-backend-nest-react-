@@ -19,7 +19,7 @@ import  InscriptionInaccessiblePage1 from './components/InscriptionInaccessibleP
 import {Checkout} from './components/Inscription/Checkout'
 import {Checkout2} from './components/Re-Inscription/Checkout'
 const nowDate = Date.now();
-const  dateInsc = new Date('2020-05-20');
+const  dateInsc = new Date('2020-07-20');
 function App() {
   return (
 

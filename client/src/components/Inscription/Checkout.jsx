@@ -146,13 +146,8 @@ export const Checkout = () => {
     fetch('http://localhost:4000/etuds/multiple', {
       method: 'POST',
       body: data,
-    })
-      .then(response => {
-        this.setState({ error: '', msg: 'Sucessfully uploaded file' });
-      })
-      .catch(err => {
-        this.setState({ error: err });
-      });
+    });
+   
 
     formData.photo = formData.photo.name;
     let url2 = 'http://localhost:4000/etuds/add';

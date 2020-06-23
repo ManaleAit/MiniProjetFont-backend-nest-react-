@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Checkbox from "@material-ui/core/Checkbox";
-import Button from "@material-ui/core/Button";
-import { Formik, Form, Field, setFieldValue } from "formik";
-import * as Yup from "yup";
-import IconButton from "@material-ui/core/IconButton";
-import PhotoCamera from "@material-ui/icons/PhotoCamera";
-import Alert from "@material-ui/lab/Alert";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import { Formik, Form, Field, setFieldValue } from 'formik';
+import * as Yup from 'yup';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import Alert from '@material-ui/lab/Alert';
 
 const validationSchema = Yup.object({});
 
@@ -18,7 +18,7 @@ export class Etape5 extends Component {
     imagePreviewUrl: null,
   };
 
-  fileChangedHandler = (event) => {
+  fileChangedHandler = event => {
     this.setState({
       selectedFile: event.target.files[0],
     });
@@ -28,7 +28,7 @@ export class Etape5 extends Component {
         imagePreviewUrl: reader.result,
       });
     };
-
+    this.props.formData.photo = event.target.files[0];
     reader.readAsDataURL(event.target.files[0]);
   };
   render() {
@@ -40,7 +40,7 @@ export class Etape5 extends Component {
     if (this.state.imagePreviewUrl) {
       $imagePreview = (
         <div className="image-container">
-          <img src={this.state.imagePreviewUrl} alt="icon" width="200" />{" "}
+          <img src={this.state.imagePreviewUrl} alt="icon" width="200" />{' '}
         </div>
       );
     }
@@ -51,14 +51,13 @@ export class Etape5 extends Component {
         </Typography>
         <Formik
           initialValues={this.props.formData}
-          onSubmit={(values) => {
+          onSubmit={values => {
             this.props.setFormData(values);
             // let valueCopie = [...values];
             // valueCopie.photo = this.state.selectedFile;
             // this.props.setFormData(valueCopie);
-            console.log(values);
+
             this.props.handleNext();
-            alert(JSON.stringify(values, null, 2));
           }}
           validationSchema={validationSchema}
         >
@@ -67,18 +66,18 @@ export class Etape5 extends Component {
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={12}>
                   <Alert severity="warning" color="warning" align="center">
-                    <div style={{ marginLeft: 16 + "em", color: "red" }}>
-                      {" "}
+                    <div style={{ marginLeft: 16 + 'em', color: 'red' }}>
+                      {' '}
                       Attention: Votre photo doit respecter les contraintes
                       suivantes:
                       <li>
-                        {" "}
+                        {' '}
                         La taille maximale de la photo est 2 Mo (2048 Ko)
                       </li>
                       <li>
-                        {" "}
+                        {' '}
                         Votre visage doit être bien claire, et sans effets sur
-                        la photo{" "}
+                        la photo{' '}
                       </li>
                       <li> Les extensions autorisés sont: JPG, JPEG et PNG.</li>
                     </div>
@@ -88,14 +87,13 @@ export class Etape5 extends Component {
                   Choisissez une photo de vous:
                 </Grid>
                 <Grid item xs={12} sm={12}>
-                 
-                <input
+                  <input
                     accept="image/*"
                     // className={classes.input}
                     id="photo"
                     type="file"
                     name="photo"
-                    onChange={(data)=>{this.props.formData.photo=data.target.files[0]}}
+                    onChange={this.fileChangedHandler}
                   />
                   <label htmlFor="photo" name="photo">
                     <IconButton
@@ -133,8 +131,8 @@ export class Etape5 extends Component {
                   className={this.props.classes.button}
                 >
                   {this.props.activeStep === this.props.steps.length - 1
-                    ? "je confirme mes données"
-                    : "Suivant"}
+                    ? 'je confirme mes données'
+                    : 'Suivant'}
                 </Button>
               </div>
             </Form>

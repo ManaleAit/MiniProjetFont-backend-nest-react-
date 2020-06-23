@@ -71,8 +71,8 @@ function Output({ formData }) {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.container}>
-          <Image style={{ width: 50, height: 50 }} src="/univ.png" />
-          <Image style={{ width: 50, height: 50 }} src="/ensa.png" />
+          <Image style={{ width: 50, height: 50 }} src={require('./index.png')} />
+          <Image style={{ width: 50, height: 50 }} src={require('./ensa.jpg')}  />
         </View>
         <View style={styles.header}>
           <Text>Fiche de renseignements en ligne</Text>

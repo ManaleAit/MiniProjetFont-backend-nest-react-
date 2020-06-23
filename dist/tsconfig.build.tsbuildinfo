@@ -2138,7 +2138,7 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../config/typeorm.config.ts": {
-        "version": "bc860b66d0d4df1df12f529cc40ae7b5b6dcbf5c1d3c49a4847f93708d4cbc8d",
+        "version": "29d0ec8586a872cfba12f4f2def407b3a3ec84f9d68b07cb8ea16e9bdf366c67",
         "signature": "320073fe0cf529bcb7699a6b52215d2a40058341a26a038c1292e29907ae5577"
       },
       "../src/app.service.ts": {

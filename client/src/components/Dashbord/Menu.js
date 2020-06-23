@@ -108,17 +108,20 @@ export default class Menu extends Component {
     
       <div className="user-panel"  style={{marginTop:-40}}>
         <div className="pull-left image">
-          <img src={user} style={{borderRadius:100}}alt="User" />
+          <img src={require(`@../../../uploads/${localStorage.getItem('photo')}`)} style={{borderRadius:20,height:50,width:60}}alt="User" />
         </div>
+   
         <div className="pull-left info">
         <p style={{color:'white'}}>{localStorage.getItem('lastname_fr')}  {localStorage.getItem('firstname_fr')}</p>
-          <a href="#"><i className="fa fa-circle text-success" /><span className='text-white'>Online</span> </a>
+      
+          <a href="#" style={{marginBottom:10}}><i className="fa fa-circle text-success" /><span className='text-white'>Online</span> </a>
         </div>
       </div>
 
 
 
       {/* search form */}
+      <br></br>
       <form action="#" method="get" className="sidebar-form">
         <div className="input-group">
           <input type="text" name="q" className="form-control" placeholder="Search..." />
