@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = ({
     type: "mysql",
     host: "localhost",
-    port: 3306,
+    port: 3308,
     username: "root",
-    password: "",
-    database: "consomation",
+    password: "root",
+    database: "testppp",
     entities: [__dirname + '/../**/*.entity.js'],
     synchronize: true
 });

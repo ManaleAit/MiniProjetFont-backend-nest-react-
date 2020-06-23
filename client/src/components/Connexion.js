@@ -28,11 +28,28 @@ export default class Connexion extends React.Component{
             [ev.target.name]: ev.target.value
         })
     }
-
+    responseGoogle = (res) => {
+        console.log(res.profileObj.email);
+        const student=Axios.get("http://localhost:4000/etuds/getbyemail/"+res.profileObj.email).then(
+            resp=>{
+                console.log(resp);
+                this.setState({
+                 massar: resp.data.massar,
+                 email:resp.data.email,
+                 password: resp.data.password,
+                })
+                this.formSubmit();
+            }
+        );
+        
+       }
+ 
     async formSubmit(ev){
         localStorage.setItem("massar",this.state.massar)
-      
-        ev.preventDefault()
+        if(ev){
+            ev.preventDefault()
+        }
+        
         const {massar,email, password} = this.state
         try {
             const token = await Axios.post("http://localhost:4000/etuds/signin", {massar, email,password})
@@ -108,7 +125,7 @@ export default class Connexion extends React.Component{
                  
                     </div>
                    
-                    <a className="already" href="/connexion">You already have an account? Login here.</a>
+                    <a className="already" style={{marginTop:20}} href="/inscription"> vous avez pas de compte? Inscrivez-vous ici</a>
                 </form>
                 </div>
             </div>

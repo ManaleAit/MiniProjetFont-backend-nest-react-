@@ -24,6 +24,12 @@ export class EtudiantsController {
     }
 
 
+    @Get('getbyemail/:email')
+    async  getStudentByEmail(@Param('email') email:string){
+      console.log(email);
+        return  this.etudiantsService.getByEmail(email);
+    }
+
     @Get(':massar')
     async  getTudo(@Param('massar') ma:string){
         return  this.etudiantsService.getByMassar(ma);

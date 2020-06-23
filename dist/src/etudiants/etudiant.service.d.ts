@@ -10,6 +10,7 @@ export declare class etudiantsService {
     private jwtService;
     constructor(etudiantRepository: etudiantRepository, filiereRepository: FiliereRepository, jwtService: JwtService);
     getAllEtudiants(): Promise<etudiant[]>;
+    getByEmail(email: any): Promise<etudiant>;
     getByMassar(massar: string): Promise<etudiant>;
     getByMassarFiliere(massar: string): Promise<any>;
     createEtudiant(createEtDTO: CreateEtudiantDTO): Promise<void>;

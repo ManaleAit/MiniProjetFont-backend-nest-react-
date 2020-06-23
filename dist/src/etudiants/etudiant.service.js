@@ -29,6 +29,13 @@ let etudiantsService = class etudiantsService {
     async getAllEtudiants() {
         return await this.etudiantRepository.find();
     }
+    async getByEmail(email) {
+        const found = await this.etudiantRepository.findOne({ 'email': email });
+        if (!found) {
+            throw new common_1.NotFoundException('this etudiant  not found !! ');
+        }
+        return found;
+    }
     async getByMassar(massar) {
         const found = await this.etudiantRepository.findOne(massar);
         if (!found) {

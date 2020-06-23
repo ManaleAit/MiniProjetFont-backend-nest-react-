@@ -30,6 +30,10 @@ let EtudiantsController = class EtudiantsController {
     async createEtudiant(createEtDTO) {
         return this.etudiantsService.createEtudiant(createEtDTO);
     }
+    async getStudentByEmail(email) {
+        console.log(email);
+        return this.etudiantsService.getByEmail(email);
+    }
     async getTudo(ma) {
         return this.etudiantsService.getByMassar(ma);
     }
@@ -79,6 +83,13 @@ __decorate([
     __metadata("design:paramtypes", [CreateEtudiantDTO_1.CreateEtudiantDTO]),
     __metadata("design:returntype", Promise)
 ], EtudiantsController.prototype, "createEtudiant", null);
+__decorate([
+    common_1.Get('getbyemail/:email'),
+    __param(0, common_1.Param('email')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], EtudiantsController.prototype, "getStudentByEmail", null);
 __decorate([
     common_1.Get(':massar'),
     __param(0, common_1.Param('massar')),

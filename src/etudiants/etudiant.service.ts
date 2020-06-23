@@ -32,7 +32,13 @@ export class etudiantsService {
     return await this.etudiantRepository.find();
   }
 
-
+  async getByEmail(email) {
+    const found = await this.etudiantRepository.findOne({ 'email': email });
+    if (!found) {
+        throw new NotFoundException('this etudiant  not found !! ');
+    }
+    return found;
+}
 
   async getByMassar(massar:string): Promise<etudiant> {
     const found= await this.etudiantRepository.findOne(massar);

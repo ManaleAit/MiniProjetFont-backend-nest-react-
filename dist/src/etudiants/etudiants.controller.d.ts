@@ -7,6 +7,7 @@ export declare class EtudiantsController {
     constructor(etudiantsService: etudiantsService);
     getetudiants(): Promise<etudiant[]>;
     createEtudiant(createEtDTO: CreateEtudiantDTO): Promise<void>;
+    getStudentByEmail(email: string): Promise<etudiant>;
     getTudo(ma: string): Promise<etudiant>;
     update(id: any, contactData: CreateEtudiantDTO): Promise<any>;
     delete(id: any): Promise<any>;
